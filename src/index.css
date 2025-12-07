@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Stack+Sans+Text:wght@200..700&display=swap');
+
+@import "tailwindcss";
+@plugin "daisyui";
+
+body{
+  font-family: "Stack Sans Text", sans-serif;
+}
+.nav-menu{
+  font-size:20px;
+  color: white;
+  
+}
+.nav-menu:hover{
+  color: #f9652f;
+}
+.active{
+color: #f9652f;
+}
+.button{
+  background-color: #f9652f;
+ 
+  border-radius: 8px;
+
+  color: white;
+  display: flex;
+  align-items: center;
+  
+  transition:0.5s;
+  
+}
+.arrow{
+  background-color: black;
+ 
+  border-radius: 5px;
+  color: white;
+  transition:0.5s;
+}
+.button:hover{
+  background-color: black;
+  border:1px solid #f9652f;
+
+}
+.button:hover .arrow{
+  background-color: #f9652f;
+  color: black;
+}
