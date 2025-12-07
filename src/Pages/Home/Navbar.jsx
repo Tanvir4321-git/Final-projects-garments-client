@@ -69,7 +69,7 @@ const Navbar = () => {
                     transition={{ type: "spring", stiffness: 400, damping: 15 }}
                         
                     >
-                       <Link className='ml-4 button  py-2 px-2 md:px-4 text-[14px] md:text-[17px] gap-2 whitespace-nowrap' >Log in <button className='arrow py-2 px-3 '><FaArrowRight className='size-2 md:size-3' /></button></Link>
+                       <Link to='/login' className='ml-4 button  py-2 px-2 md:px-4 text-[14px] md:text-[17px] gap-2 whitespace-nowrap' >Log in <button className='arrow py-2 px-3 '><FaArrowRight className='size-2 md:size-3' /></button></Link>
                     </motion.div>
                     <motion.div
                       
@@ -77,7 +77,7 @@ const Navbar = () => {
                     transition={{ type: "spring", stiffness: 400, damping: 15 }}
                         
                     >
-                       <Link className='ml-4 button  py-2 px-2 md:px-4 text-[14px] md:text-[17px] gap-2' >Register  <button className='arrow py-2 px-3 '><FaArrowRight className='size-2 md:size-3' /></button></Link>
+                       <Link to='/register' className='ml-4 button  py-2 px-2 md:px-4 text-[14px] md:text-[17px] gap-2' >Register  <button className='arrow py-2 px-3 '><FaArrowRight className='size-2 md:size-3' /></button></Link>
                     </motion.div>
 
                    
