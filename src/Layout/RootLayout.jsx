@@ -1,6 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router';
 import Navbar from '../Pages/Home/Navbar';
+import Footer from '../Pages/Home/Footer';
 
 const RootLayout = () => {
     return (
@@ -8,9 +9,11 @@ const RootLayout = () => {
           <header>
             <Navbar></Navbar>
           </header>
-          <main><Outlet></Outlet></main>
+          <main className='bg-linear-to-br from-gray-900 via-gray-800 to-black'><Outlet></Outlet></main>
           
-          <footer></footer>
+          <footer>
+            <Footer></Footer>
+          </footer>
         </div>
     );
 };
