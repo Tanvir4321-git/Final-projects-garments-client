@@ -5,6 +5,8 @@ import logo from '../../assets/logo1.jpg'
 import { FaArrowRight } from 'react-icons/fa';
 import { motion } from "framer-motion";
 const Navbar = () => {
+ 
+
  const [open,setopen]=useState(false)
    const links = (
   <>
