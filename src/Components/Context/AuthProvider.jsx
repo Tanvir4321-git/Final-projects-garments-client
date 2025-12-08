@@ -9,7 +9,7 @@ import { auth } from '../FirebaseConfiq';
 const Goggleprovider = new GoogleAuthProvider();
 const AuthProvider = ({children}) => {
 
-const [user,setuser]=useState()
+const [user,setuser]=useState(null)
 const [loading,setloading]=useState(true)
 console.log(user)
 

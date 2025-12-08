@@ -1,11 +1,12 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { Outlet } from 'react-router';
 import { motion } from 'framer-motion';
 const AuthLayout = () => {
     return (
         <div className='bg-linear-to-br from-gray-900 via-gray-800 to-black'>
-            <div className='w-11/12 mx-auto flex items-center gap-20 py-20'>
-                <div className='w-1/2'>
+            <div className='w-11/12 mx-auto flex lg:flex-row flex-col items-center gap-10 md:gap-20 py-20'>
+                <div className='lg:w-1/2 w-full'>
                     <motion.h2 initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false, amount: 0.3 }}
@@ -25,7 +26,7 @@ const AuthLayout = () => {
                             Exclusive deals for members</p>
                     </div>
                 </div>
-                <div className='w-1/2'>
+                <div className='lg:w-1/2 w-full'>
 
                     <Outlet></Outlet>
                 </div>

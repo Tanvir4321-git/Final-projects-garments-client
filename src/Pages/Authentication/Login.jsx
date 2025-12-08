@@ -22,21 +22,36 @@ const Login = () => {
             navigate('/')
             toast('successfuly log in')
         } catch (err) {
-            toast(err?.message)
+            if (err.code === 'auth/invalid-credential') {
+                toast('Invalid email or password. Please check and try again.')
+            }
+            else if (err.code === 'auth/missing-password') {
+                toast('Enter password')
+            }
+            else if (err.code === 'auth/invalid-email') {
+                toast('NO email found')
+            }
+
+            else {
+                toast(err.message)
+            }
+
+
         }
 
     }
 
     const handlegoogle = async () => {
-        try{
+        try {
 
-         
-            const {user} = await GoglleLogin()
-              await addorUpdateuser({ name: user?.displayName, email: user?.email, image: user?.photoURL,role:'Buyer' })
-                navigate('/')
-                  toast('successfuly log in')
+
+            const { user } = await GoglleLogin()
+            await addorUpdateuser({ name: user?.displayName, email: user?.email, image: user?.photoURL, role: 'Buyer' })
+            navigate('/')
+            toast('successfuly log in')
         }
         catch (err) {
+
             toast(err?.message)
         }
     }
@@ -54,25 +69,17 @@ const Login = () => {
 
                                 {/* email */}
                                 <label className="label">Email</label>
-                                <input {...register('email', { required: 'email is required' })} type="email" className="input bg-transparent " placeholder="Email" />
-                                {errors.email && <p className='text-red-600 text-[16px]'>{errors.email.message}</p>}
+                                <input {...register('email')} type="email" className="input bg-transparent " placeholder="Email" />
+                                {/* {errors.email && <p className='text-red-600 text-[16px]'>{errors.email.message}</p>} */}
 
 
 
                                 {/* password */}
                                 <label className="label">Password</label>
-                                <input {...register('pass', {
-                                    required: 'Pass is required', minLength: {
-                                        value: 6,
-                                        message: 'Password must be 6 character'
-                                    },
-                                    pattern: {
-                                        value: /^(?=.*[a-z])(?=.*[A-Z]).+$/,
-                                        message: "Password must contain at least one uppercase and one lowercase letter"
-                                    }
+                                <input {...register('pass')}
 
-                                })} type="password" className="input bg-transparent" placeholder="Password" />
-                                {errors.pass && <p className='text-red-600 text-[16px]'>{errors.pass.message}</p>}
+                                    type="password" className="input bg-transparent" placeholder="Password" />
+                                {/* {errors.pass && <p className='text-red-600 text-[16px]'>{errors.pass.message}</p>} */}
 
                                 {/* button */}
                                 <motion.div
