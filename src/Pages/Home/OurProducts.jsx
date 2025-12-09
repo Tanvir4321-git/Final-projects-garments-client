@@ -9,22 +9,22 @@ import axios from 'axios';
 import Loading from '../../Components/Loading';
 
 const OurProducts = () => {
-    const { data: products = [],isLoading } = useQuery({
+    const { data: products = [], isLoading } = useQuery({
         queryKey: ['our-products'],
         queryFn: async () => {
-            const res = await axios('http://localhost:3000/our-products')
+            const res = await axios('http://localhost:3000/our-products?limit=6')
             return res.data
         }
     })
 
-if(isLoading)return<Loading></Loading>
+    if (isLoading) return <Loading></Loading>
 
     return (
         <div >
             <div className='w-11/12 mx-auto py-16'>
-              <h2 className="text-5xl text-center font-bold text-white mb-14">
-           Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500">Products</span>
-          </h2>
+                <h2 className="text-5xl text-center font-bold text-white mb-14">
+                    Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500">Products</span>
+                </h2>
                 <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-5'>
 
 
@@ -38,9 +38,9 @@ if(isLoading)return<Loading></Loading>
 
                                 initial={{ opacity: 0, y: 50 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                
-              viewport={{ once: false, amount: 0.3 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
+
+                                viewport={{ once: false, amount: 0.3 }}
+                                transition={{ duration: 0.5, ease: "easeOut" }}
 
                                 whileHover={{
                                     scale: 1.03,
@@ -67,14 +67,14 @@ if(isLoading)return<Loading></Loading>
                                 {/* name + price */}
                                 <div className='flex items-center justify-between text-white '>
                                     <h2 className='text-[20px] font-semibold my-5'>
-                                        {product.name}
+                                        {product.productName}
                                     </h2>
                                     <h3 className='font-semibold'>Price: {product.price}</h3>
                                 </div>
 
                                 {/* short desc */}
                                 <p className='text-gray-400 text-sm leading-relaxed mb-5'>
-                                    {product.shortDesc}
+                                    {product.shortDescription}
                                 </p>
 
                                 {/* button */}

@@ -63,7 +63,7 @@ const WhychosseUs = () => {
 
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-14 gap-5'>
                 {
-                    data.map(d => <motion.div
+                    data.map(d => <motion.div key={d.id}
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false, amount: 0.3 }}
@@ -84,7 +84,7 @@ const WhychosseUs = () => {
 
 
 
-                        key={data.id} className='bg-linear-to-br from-gray-800/80 via-gray-900/80 to-black/80 rounded-xl p-6 border border-[#252f3e] '>
+                         className='bg-linear-to-br from-gray-800/80 via-gray-900/80 to-black/80 rounded-xl p-6 border border-[#252f3e] '>
                         <div className={`bg-gradient-to-r ${d.color} inline-block  rounded-xl`}>
 
                             <div className={`p-4  text-white  `}>

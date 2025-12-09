@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { use } from 'react';
 import { motion } from "framer-motion";
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { FaArrowRight } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import { Authcontext } from '../../Components/Context/Authcontext';
@@ -9,6 +9,7 @@ import { addorUpdateuser } from '../../Components/utlitis';
 import { toast } from 'react-toastify';
 const Login = () => {
     const navigate = useNavigate()
+    const location =useLocation()
     const { login, GoglleLogin, } = use(Authcontext)
     const { register, handleSubmit, formState: { errors } } = useForm()
 
@@ -19,7 +20,13 @@ const Login = () => {
 
             const { user } = await login(email, pass)
             await addorUpdateuser({ name: user?.displayName, email: user?.email, image: user?.photoURL })
-            navigate('/')
+
+           if(location.state){
+  navigate(location.state)
+      }
+    else{
+navigate('/')
+    }  
             toast('successfuly log in')
         } catch (err) {
             if (err.code === 'auth/invalid-credential') {

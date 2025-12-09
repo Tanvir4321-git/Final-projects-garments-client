@@ -38,6 +38,13 @@ const Navbar = () => {
           Contact
         </NavLink>
       </li>
+      {
+        user && <li>
+        <NavLink to='/dashboard' className='nav-menu' onClick={() => setopen(false)}>
+        Dashboard
+        </NavLink>
+      </li>
+      }
     </>
   );
 

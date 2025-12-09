@@ -8,6 +8,11 @@ import MoreDetails from '../Pages/Home/MoreDetails';
 import AuthLayout from '../Layout/AuthLayout';
 import Register from '../Pages/Authentication/Register';
 import Login from '../Pages/Authentication/Login';
+import PrivateROute from '../Components/PrivateROute';
+import DashboardLayout from '../Layout/DashboardLayout';
+import DashboardHome from '../Pages/Dashboard/DashboardHome';
+import AllProducts from '../Pages/Dashboard/AllProducts';
+
 
  export const router = createBrowserRouter([
   {
@@ -25,14 +30,22 @@ import Login from '../Pages/Authentication/Login';
     },
     {
       path:'/more-details/:id',
-      Component:MoreDetails
-    }
+      element:<PrivateROute>
+        <MoreDetails></MoreDetails>
+      </PrivateROute>
+      
+    },
+      {
+        path:'/all-products',
+        Component:AllProducts
+      },
+     
    ]
   },
   {
     path:'/',
     Component:AuthLayout,
-    errorElement:<ErrorPage></ErrorPage>,
+   
     children:[
       {
         path:'/register',
@@ -44,6 +57,22 @@ import Login from '../Pages/Authentication/Login';
 
       }
     ]
+    
+  },
+  {
+    path:'dashboard',
+    element: <PrivateROute>
+      <DashboardLayout></DashboardLayout>
+    </PrivateROute>,
+    errorElement:<ErrorPage></ErrorPage>,
+    children:[
+      {
+        index:true,
+        Component:DashboardHome
+      },
+    
+    ]
+
     
   }
 ]);
