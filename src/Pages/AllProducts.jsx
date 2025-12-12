@@ -2,21 +2,23 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React from 'react';
-import Loading from '../../Components/Loading';
+
 import { Link } from 'react-router';
 import { motion } from "framer-motion";
 import { FaArrowRight } from 'react-icons/fa';
+import Loading from '../Components/Loading';
 
 const AllProducts = () => {
 
     const { data: products = [], isLoading } = useQuery({
+        
         queryKey: ['all-products'],
         queryFn: async () => {
-            const res = await axios('http://localhost:3000/our-products')
+            const res = await axios('http://localhost:3000/all-products')
             return res.data
         }
     })
-
+console.log(products)
     if (isLoading) return <Loading></Loading>
 
 

@@ -27,8 +27,7 @@ const MoreDetails = () => {
                     <img className='rounded-xl h-[400px] w-full md:h-[500px]' src={product.image} alt="" />
                 </div>
                 <div className="lg:w-1/2 w-full">
-                    <h2 className='font-semibold text-[20px] mb-8'> {product.
-                        productName}</h2>
+                    <h2 className='font-semibold text-[20px] mb-8'> {product.productName}</h2>
                     <p className='leading-7'>{product.description}</p>
                     <div className=' border-t border-gray-400 mt-4 py-5'>
                         <div className='flex items-center justify-between'>
@@ -57,14 +56,14 @@ const MoreDetails = () => {
                                 transition={{ type: "spring", stiffness: 400, damping: 15 }}
                                 className='w-[250px] '
                             >
-                                <Link to='/about' className='button py-2 px-2 md:px-4 text-[14px] md:text-[17px] gap-2'>
-                                    Start Shopping Now
+                                <Link to='/order' state={product} className='button py-2 px-2 md:px-4 text-[14px] md:text-[17px] flex justify-center gap-2'>
+                                    Order Now
                                     <button className='arrow py-2 px-3'>
                                         <FaArrowRight size={12} />
                                     </button>
                                 </Link>
                             </motion.div>
-                        </motion.div> :<button disabled className=' button  my-4 py-2 px-2 md:px-4 text-[14px] w-[250px]  md:text-[17px] gap-2 flex justify-center' >you are suspend </button>
+                        </motion.div> :<button disabled className=' button  my-4 py-2 px-2 md:px-4 text-[14px] w-[250px]  md:text-[17px] gap-2 flex justify-center' >You can't buy </button>
                         }
                        
                     </div>

@@ -12,7 +12,7 @@ const OurProducts = () => {
     const { data: products = [], isLoading } = useQuery({
         queryKey: ['our-products'],
         queryFn: async () => {
-            const res = await axios('http://localhost:3000/our-products?limit=6')
+            const res = await axios('http://localhost:3000/our-products')
             return res.data
         }
     })
