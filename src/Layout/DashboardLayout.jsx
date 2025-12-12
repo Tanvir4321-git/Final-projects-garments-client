@@ -5,6 +5,11 @@ import { LuCodesandbox, LuUsers, } from "react-icons/lu";
 import { MdProductionQuantityLimits } from "react-icons/md"
 import { GrDeliver } from "react-icons/gr";
 import useRole from '../Components/CustomHooks/useRole';
+import { FaWpforms } from 'react-icons/fa';
+import { SiManageiq } from "react-icons/si";
+
+
+
 const DashboardLayout = () => {
   const { role } = useRole()
   return (
@@ -87,8 +92,17 @@ const DashboardLayout = () => {
                   <li>
                     <button className="is-drawer-close:tooltip hover:bg-[#ff6200] is-drawer-close:tooltip-right" data-tip="Add Products">
                       {/* icon */}
-                      <LuCodesandbox />
+                      <FaWpforms />
                       <span className="is-drawer-close:hidden">Add Products</span>
+                    </button>
+                  </li>
+                </NavLink>
+                   <NavLink to='manage-products'>
+                  <li>
+                    <button className="is-drawer-close:tooltip hover:bg-[#ff6200] is-drawer-close:tooltip-right" data-tip="Manage Products">
+                      {/* icon */}
+                     <SiManageiq />
+                      <span className="is-drawer-close:hidden">Manage Products</span>
                     </button>
                   </li>
                 </NavLink>

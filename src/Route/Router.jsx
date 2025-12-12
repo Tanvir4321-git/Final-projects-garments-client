@@ -22,6 +22,7 @@ import ManagerRoute from '../Components/PrivateRoute/ManagerRoute';
 import AddProduct from '../Pages/Dashboard/Manager/AddProduct';
 import Myorder from '../Pages/Dashboard/Buyer/Myorder';
 import PaymentSuccess from '../Pages/Dashboard/PaymentSuccess';
+import ManageProducts from '../Pages/Dashboard/Manager/ManageProducts';
 
 
 export const router = createBrowserRouter([
@@ -109,6 +110,12 @@ export const router = createBrowserRouter([
         element:<ManagerRoute>
           <AddProduct></AddProduct>
         </ManagerRoute>
+      },
+      {
+          path:'manage-products',
+          element:<ManagerRoute>
+            <ManageProducts></ManageProducts>
+          </ManagerRoute>
       },
       {
         path:'my-orders',
