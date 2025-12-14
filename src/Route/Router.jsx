@@ -23,6 +23,10 @@ import AddProduct from '../Pages/Dashboard/Manager/AddProduct';
 import Myorder from '../Pages/Dashboard/Buyer/Myorder';
 import PaymentSuccess from '../Pages/Dashboard/PaymentSuccess';
 import ManageProducts from '../Pages/Dashboard/Manager/ManageProducts';
+import PendingOrder from '../Pages/Dashboard/Manager/PendingOrder';
+import ApprovedOrders from '../Pages/Dashboard/Manager/ApprovedOrders';
+import TrackYourOrder from '../Pages/Dashboard/Buyer/TrackYourOrder';
+
 
 
 export const router = createBrowserRouter([
@@ -118,8 +122,24 @@ export const router = createBrowserRouter([
           </ManagerRoute>
       },
       {
+        path:'pending-orders',
+        element:<ManagerRoute>
+          <PendingOrder></PendingOrder>
+        </ManagerRoute>
+      },
+      {
+     path:'approved-orders',
+     element:<ManagerRoute>
+      <ApprovedOrders></ApprovedOrders>
+     </ManagerRoute>
+      },
+      {
         path:'my-orders',
         Component:Myorder
+      },
+       {
+        path:'order/:trackingId',
+        Component:TrackYourOrder
       },
       {
         path: 'payment-success',

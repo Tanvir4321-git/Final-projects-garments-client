@@ -1,14 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { use } from 'react';
+import React, { use, useRef, useState } from 'react';
 import { Authcontext } from '../../../Components/Context/Authcontext';
 import useAxiosHook from '../../../Components/CustomHooks/useAxiosHook';
 import { Link } from 'react-router';
+import ViewDetailsModal from './ViewDetailsModal';
 
 const Myorder = () => {
     const { user } = use(Authcontext)
     const axioshook = useAxiosHook()
-
-    const { data: orders = [] } = useQuery({
+ const detailsRef = useRef()
+    const [selectedProduct, setSelectedProduct] = useState({});
+    const { data: orders = [],refetch } = useQuery({
 
 
         queryKey: ['myOrder', user?.email],
@@ -37,8 +39,17 @@ const Myorder = () => {
 
     }
 
-    
+//   const handleCancle=()  
+const handleCancle=async(order)=>{
+   await axioshook.delete(`/myorder/${order._id}`)
+   refetch()
+}
 
+ const handlemodalOpen = (order) => {
+        setSelectedProduct(order);
+        detailsRef.current.showModal()
+
+    }
 
 
     return (
@@ -56,9 +67,10 @@ const Myorder = () => {
                     {/* head */}
                     <thead className='text-white  '>
                         <tr className=''>
-                            <th>No</th>
+                            
                             <th>Order ID </th>
                             <th>Product</th>
+                            <th>Track your Order</th>
                             <th>Quantity</th>
                             <th>Status</th>
                             <th>Payment</th>
@@ -69,9 +81,12 @@ const Myorder = () => {
                         {/* row 1 */}
                         {
                             orders.map((order, i) => <tr key={i}>
-                                <th>{i + 1}</th>
+                              
                                 <td>{order._id}</td>
                                 <td>{order.productname}</td>
+                                <td>
+                                    <Link to={`/dashboard/order/${order.trackingId}`}>{order.trackingId}</Link>
+                                </td>
                                 <td>{order.quantity}</td>
                                 <td>{order.status}</td>
                                 <td>
@@ -82,13 +97,19 @@ const Myorder = () => {
                                 </td>
 
                                
-                                <td>cancel</td>
+                                <td><button onClick={() => handlemodalOpen(order)}  className='btn'>View Button</button>
+                                {
+                                    order.status!=='approved' && <button onClick={()=> handleCancle(order)}  className='btn ml-2'>Cancel</button>
+                                }
+                               
+                                </td>
                             </tr>)
                         }
 
 
                     </tbody>
                 </table>
+                <ViewDetailsModal order={selectedProduct} detailsRef={detailsRef}/>
             </div>
         </div>
     );

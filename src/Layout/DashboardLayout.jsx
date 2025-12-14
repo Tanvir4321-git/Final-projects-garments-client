@@ -2,12 +2,12 @@ import React from 'react';
 import { Link, NavLink, Outlet } from 'react-router';
 import logo from '../assets/logo1.jpg'
 import { LuCodesandbox, LuUsers, } from "react-icons/lu";
-import { MdProductionQuantityLimits } from "react-icons/md"
+import { MdOutlinePendingActions, MdProductionQuantityLimits } from "react-icons/md"
 import { GrDeliver } from "react-icons/gr";
 import useRole from '../Components/CustomHooks/useRole';
 import { FaWpforms } from 'react-icons/fa';
 import { SiManageiq } from "react-icons/si";
-
+import { FcApproval } from "react-icons/fc";
 
 
 const DashboardLayout = () => {
@@ -23,7 +23,7 @@ const DashboardLayout = () => {
             {/* Sidebar toggle icon */}
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="white" className="my-1.5 inline-block size-4"><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path><path d="M9 4v16"></path><path d="M14 10l2 2l-2 2"></path></svg>
           </label>
-          <div className="px-4 text-3xl text-white">Haque <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500" >Garmnets</span></div>
+          <div className="px-4 text-3xl text-white">Admin<span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500" >  Dashboard</span></div>
         </nav>
         {/* Page content here */}
         <Outlet></Outlet>
@@ -35,10 +35,10 @@ const DashboardLayout = () => {
 
           {/* Sidebar content here */}
           <ul className="menu w-full grow text-white text-[18px]">
-            <NavLink to='/'> <img src={logo} className='w-10' alt="" /> </NavLink>
+            <NavLink to='/'> <img src={logo} className='w-10 rounded-full' alt="" /> </NavLink>
             {/* List item */}
             <li>
-              <button className="is-drawer-close:tooltip hover:bg-[#ff6200] is-drawer-close:tooltip-right" data-tip="Homepage">
+              <button className="is-drawer-close:tooltip hover:bg-[#ff6200] hover:text-white is-drawer-close:tooltip-right" data-tip="Homepage">
 
                 {/* Home icon */}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
@@ -54,7 +54,7 @@ const DashboardLayout = () => {
 
                 <NavLink to='manage-users'>
                   <li>
-                    <button className="is-drawer-close:tooltip hover:bg-[#ff6200] is-drawer-close:tooltip-right" data-tip="manage-users">
+                    <button className="is-drawer-close:tooltip hover:bg-[#ff6200] hover:text-white  is-drawer-close:tooltip-right" data-tip="manage-users">
                       {/* Settings icon */}
                       <LuUsers />
                       <span className="is-drawer-close:hidden">manage-users </span>
@@ -65,7 +65,7 @@ const DashboardLayout = () => {
                 {/* Admin All products*/}
                 <NavLink to='dash-all-products'>
                   <li>
-                    <button className="is-drawer-close:tooltip hover:bg-[#ff6200] is-drawer-close:tooltip-right" data-tip="All-Products">
+                    <button className="is-drawer-close:tooltip hover:bg-[#ff6200] hover:text-white is-drawer-close:tooltip-right" data-tip="All-Products">
                       {/*  icon */}
                       <MdProductionQuantityLimits />
                       <span className="is-drawer-close:hidden">All Products </span>
@@ -75,7 +75,7 @@ const DashboardLayout = () => {
                 {/* Admin All orders*/}
                 <NavLink to='all-orders'>
                   <li>
-                    <button className="is-drawer-close:tooltip hover:bg-[#ff6200] is-drawer-close:tooltip-right" data-tip="All Orders">
+                    <button className="is-drawer-close:tooltip hover:bg-[#ff6200] hover:text-white is-drawer-close:tooltip-right" data-tip="All Orders">
                       {/* Settings icon */}
                       <GrDeliver />
                       <span className="is-drawer-close:hidden">All Orders</span>
@@ -84,43 +84,68 @@ const DashboardLayout = () => {
                 </NavLink>
               </>
             }
- {/* manager route */}
+            {/* manager route */}
             {
-                role.role==='manager'  && <>
+              role.role === 'Manager' && <>
                 {/* add products */}
-                   <NavLink to='add-products'>
+                <NavLink to='add-products'>
                   <li>
-                    <button className="is-drawer-close:tooltip hover:bg-[#ff6200] is-drawer-close:tooltip-right" data-tip="Add Products">
+                    <button className="is-drawer-close:tooltip hover:bg-[#ff6200] hover:text-white is-drawer-close:tooltip-right" data-tip="Add Products">
                       {/* icon */}
                       <FaWpforms />
                       <span className="is-drawer-close:hidden">Add Products</span>
                     </button>
                   </li>
                 </NavLink>
-                   <NavLink to='manage-products'>
+                <NavLink to='manage-products'>
                   <li>
-                    <button className="is-drawer-close:tooltip hover:bg-[#ff6200] is-drawer-close:tooltip-right" data-tip="Manage Products">
+                    <button className="is-drawer-close:tooltip hover:bg-[#ff6200] hover:text-white is-drawer-close:tooltip-right" data-tip="Manage Products">
                       {/* icon */}
-                     <SiManageiq />
+                      <SiManageiq />
                       <span className="is-drawer-close:hidden">Manage Products</span>
                     </button>
                   </li>
                 </NavLink>
-                </>
-            }
-
-           {/* // buyer */}
-           {/* my-orders */}
-           <NavLink to='my-orders'>
+                <NavLink to='pending-orders'>
                   <li>
-                    <button className="is-drawer-close:tooltip hover:bg-[#ff6200] is-drawer-close:tooltip-right" data-tip="My Orders">
+                    <button className="is-drawer-close:tooltip hover:bg-[#ff6200] hover:text-white is-drawer-close:tooltip-right" data-tip="Pending Orders">
                       {/* icon */}
-                      <LuCodesandbox />
-                      <span className="is-drawer-close:hidden">My Orders</span>
+                      <MdOutlinePendingActions />
+                      <span className="is-drawer-close:hidden">Pending Orders</span>
                     </button>
                   </li>
                 </NavLink>
+                <NavLink to='approved-orders'>
+                  <li>
+                    <button className="is-drawer-close:tooltip hover:bg-[#ff6200] hover:text-white is-drawer-close:tooltip-right" data-tip="Approved Orders">
+                      {/* icon */}
+                      <FcApproval />
+                      <span className="is-drawer-close:hidden">Approved Orders</span>
+                    </button>
+                  </li>
+                </NavLink>
+              </>
+            }
+
+            {/* // buyer */}
+            {/* my-orders */}
+            {
+              role.role==='Buyer' &&  <>
+            <NavLink to='my-orders'>
+              <li>
+                <button className="is-drawer-close:tooltip hover:bg-[#ff6200] hover:text-white is-drawer-close:tooltip-right" data-tip="My Orders">
+                  {/* icon */}
+                  <LuCodesandbox />
+                  <span className="is-drawer-close:hidden">My Orders</span>
+                </button>
+              </li>
+            </NavLink>
           
+              
+              </>
+            }
+
+
 
 
 

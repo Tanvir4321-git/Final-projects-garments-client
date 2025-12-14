@@ -19,7 +19,7 @@ const OrderForm = () => {
     const navigate=useNavigate()
     const location = useLocation();
     const product = location.state;
-
+console.log(product)
     const [totalamount,settotalamount]=useState(0)
 
     const { user,loading } = use(Authcontext)
@@ -58,7 +58,8 @@ const newData={...data,price:totalamount,trackingId:product.trackingId}
 }).then((result) => {
   if (result.isConfirmed) {
   const info={
-    ...newData,paymentStatus:'Cash on Delivery'
+    ...newData,paymentStatus:'Cash on Delivery',
+createdBy:product.createdBy
   }
  
     axioshook.post('/delivery',info)
@@ -91,7 +92,7 @@ const newData={...data,price:totalamount,trackingId:product.trackingId}
 }).then((result) => {
   if (result.isConfirmed) {
 const info={
-    ...newData,paymentStatus:'Unpaid'
+    ...newData,paymentStatus:'Unpaid',createdBy:product.createdBy
   }
  axioshook.post('/delivery',info)
     .then(async()=>{

@@ -7,9 +7,11 @@ import { Authcontext } from '../../../Components/Context/Authcontext';
 import useAxiosHook from '../../../Components/CustomHooks/useAxiosHook';
 import { imageUpload } from '../../../Components/utlitis';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router';
 const AddProduct = () => {
     const { user } = use(Authcontext)
     const axioshook = useAxiosHook()
+    const navigate=useNavigate()
 
     const { register, handleSubmit, formState: { errors } } = useForm()
 
@@ -27,6 +29,7 @@ const AddProduct = () => {
                 ...data,image:imageURLs, createdBy: user?.email
             }
             await axioshook.post('/products', productInfo)
+            navigate('/dashboard/manage-products')
             toast('Successfullly add product')
         } catch (err) {
             console.log(err)
