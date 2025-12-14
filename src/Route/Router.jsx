@@ -27,6 +27,7 @@ import PendingOrder from '../Pages/Dashboard/Manager/PendingOrder';
 import ApprovedOrders from '../Pages/Dashboard/Manager/ApprovedOrders';
 import TrackYourOrder from '../Pages/Dashboard/Buyer/TrackYourOrder';
 import AdAllorder from '../Pages/Dashboard/AdAllorder';
+import MyProfile from '../Pages/Dashboard/Profile/MyProfile';
 
 
 
@@ -141,6 +142,10 @@ export const router = createBrowserRouter([
        {
         path:'order/:trackingId',
         Component:TrackYourOrder
+      },
+      {
+           path:'my-profile',
+           Component:MyProfile
       },
       {
         path: 'payment-success',

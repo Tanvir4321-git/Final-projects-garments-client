@@ -8,7 +8,7 @@ import useRole from '../Components/CustomHooks/useRole';
 import { FaWpforms } from 'react-icons/fa';
 import { SiManageiq } from "react-icons/si";
 import { FcApproval } from "react-icons/fc";
-
+import { CgProfile } from "react-icons/cg";
 
 const DashboardLayout = () => {
   const { role } = useRole()
@@ -130,33 +130,39 @@ const DashboardLayout = () => {
             {/* // buyer */}
             {/* my-orders */}
             {
-              role.role==='Buyer' &&  <>
-            <NavLink to='my-orders'>
-              <li>
-                <button className="is-drawer-close:tooltip hover:bg-[#ff6200] hover:text-white is-drawer-close:tooltip-right" data-tip="My Orders">
-                  {/* icon */}
-                  <LuCodesandbox />
-                  <span className="is-drawer-close:hidden">My Orders</span>
-                </button>
-              </li>
-            </NavLink>
-          
-              
+              role.role === 'Buyer' && <>
+                <NavLink to='my-orders'>
+                  <li>
+                    <button className="is-drawer-close:tooltip hover:bg-[#ff6200] hover:text-white is-drawer-close:tooltip-right" data-tip="My Orders">
+                      {/* icon */}
+                      <LuCodesandbox />
+                      <span className="is-drawer-close:hidden">My Orders</span>
+                    </button>
+                  </li>
+                </NavLink>
+
+
               </>
             }
 
+  
+     {/* profile */}
+       
+            <NavLink to='my-Profile'>
+              <li>
+                <button className="is-drawer-close:tooltip hover:bg-[#ff6200] hover:text-white is-drawer-close:tooltip-right" data-tip="My Profile">
+                  {/* icon */}
+                  <CgProfile />
+                  <span className="is-drawer-close:hidden">My Profile</span>
+                </button>
+              </li>
+            </NavLink>
+       
+            
 
 
 
 
-
-            <li>
-              <button className="is-drawer-close:tooltip hover:bg-[#ff6200] is-drawer-close:tooltip-right" data-tip="Settings">
-                {/* Settings icon */}
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4"><path d="M20 7h-9"></path><path d="M14 17H5"></path><circle cx="17" cy="17" r="3"></circle><circle cx="7" cy="7" r="3"></circle></svg>
-                <span className="is-drawer-close:hidden">Settings</span>
-              </button>
-            </li>
           </ul>
         </div>
       </div>
