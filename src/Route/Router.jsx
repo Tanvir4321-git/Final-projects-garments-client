@@ -15,7 +15,7 @@ import DashboardHome from '../Pages/Dashboard/DashboardHome';
 import OrderFrom from '../Pages/OrderForm';
 import AllProducts from '../Pages/AllProducts';
 import ManageUsers from '../Pages/Dashboard/ManageUsers';
-import AllOrders from '../Pages/Dashboard/AllOrders';
+
 import DashAllProducts from '../Pages/Dashboard/DashAllProducts';
 import AdminRoute from '../Components/PrivateRoute/AdminRoute';
 import ManagerRoute from '../Components/PrivateRoute/ManagerRoute';
@@ -26,6 +26,7 @@ import ManageProducts from '../Pages/Dashboard/Manager/ManageProducts';
 import PendingOrder from '../Pages/Dashboard/Manager/PendingOrder';
 import ApprovedOrders from '../Pages/Dashboard/Manager/ApprovedOrders';
 import TrackYourOrder from '../Pages/Dashboard/Buyer/TrackYourOrder';
+import AdAllorder from '../Pages/Dashboard/AdAllorder';
 
 
 
@@ -99,7 +100,7 @@ export const router = createBrowserRouter([
       {
         path: 'all-orders',
        element:<AdminRoute>
-        <AllOrders></AllOrders>
+        <AdAllorder></AdAllorder>
        </AdminRoute>
       },
 

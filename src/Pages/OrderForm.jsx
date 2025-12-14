@@ -15,109 +15,116 @@ import { useEffect } from 'react';
 
 
 const OrderForm = () => {
-    const axioshook=useAxiosHook()
-    const navigate=useNavigate()
+    const axioshook = useAxiosHook()
+    const navigate = useNavigate()
     const location = useLocation();
     const product = location.state;
-console.log(product)
-    const [totalamount,settotalamount]=useState(0)
 
-    const { user,loading } = use(Authcontext)
+
+    const [totalamount, settotalamount] = useState(0)
+
+    const { user, loading } = use(Authcontext)
     const { register, handleSubmit, control, formState: { errors } } = useForm()
     const quantity = useWatch({
         name: "quantity",
         control: control
     }) || 1;
-    
-    useEffect(()=>{
-  if(product.price || quantity){
-      const totalPrice = quantity * product.price
 
-settotalamount(totalPrice)
-//  setValue('price', totalPrice);
+    useEffect(() => {
+        if (product.price || quantity) {
+            const totalPrice = quantity * product.price
 
-  }
+            settotalamount(totalPrice)
+            //  setValue('price', totalPrice);
 
-},[product,quantity])
+        }
+
+    }, [product, quantity])
 
     const handleorder = (data, e) => {
-const newData={...data,price:totalamount,trackingId:product.trackingId}
-    const action = e.nativeEvent.submitter.value; 
-  
 
-    if (action === "cod") {
-    
-        Swal.fire({
-  title: "Are you sure?",
-  text: "You won't be able to revert this!",
-  icon: "warning",
-  showCancelButton: true,
-  confirmButtonColor: "#3085d6",
-  cancelButtonColor: "#d33",
-  confirmButtonText: "Yes, confirm!"
-}).then((result) => {
-  if (result.isConfirmed) {
-  const info={
-    ...newData,paymentStatus:'Cash on Delivery',
-createdBy:product.createdBy
-  }
- 
-    axioshook.post('/delivery',info)
-    .then(()=>{
+        const quantityleft=product.
+availableQuantity-data.quantity
 
-        navigate('/dashboard/my-orders')
-
-        Swal.fire({
-          title: "Confirm!",
-          text: "Your order has been submited.",
-          icon: "success",
-         
-        });
-    })
+        const newData = { ...data, price: totalamount, trackingId: product.trackingId }
+        const action = e.nativeEvent.submitter.value;
 
 
-  }
-});
+        if (action === "cod") {
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, confirm!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const info = {
+                        ...newData, paymentStatus: 'Cash on Delivery',
+                        createdBy: product.createdBy,
+                        productId:product._id,
+                        quantityleft
+                    }
+
+                    axioshook.post('/delivery', info)
+                        .then(() => {
+
+                            navigate('/dashboard/my-orders')
+
+                            Swal.fire({
+                                title: "Confirm!",
+                                text: "Your order has been submited.",
+                                icon: "success",
+
+                            });
+                        })
 
 
-    } else if (action === "online") {
-     Swal.fire({
-  title: "Are you sure?",
-  text: "You won't be able to revert this!",
-  icon: "warning",
-  showCancelButton: true,
-  confirmButtonColor: "#3085d6",
-  cancelButtonColor: "#d33",
-  confirmButtonText: "Yes, Confirm!"
-}).then((result) => {
-  if (result.isConfirmed) {
-const info={
-    ...newData,paymentStatus:'Unpaid',createdBy:product.createdBy
-  }
- axioshook.post('/delivery',info)
-    .then(async()=>{
-        Swal.fire({
-          title: "Confirm!",
-          text: "GO for pay.",
-          icon: "success"
-        });
-
-        navigate('/dashboard/my-orders')
+                }
+            });
 
 
-    })
+        } else if (action === "online") {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, Confirm!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const info = {
+                        ...newData, paymentStatus: 'Unpaid', createdBy: product.createdBy, productId:product._id,quantityleft
+                    }
+                    axioshook.post('/delivery', info)
+                        .then(async () => {
+                            Swal.fire({
+                                title: "Confirm!",
+                                text: "GO for pay.",
+                                icon: "success"
+                            });
 
-  }
-});
+                            navigate('/dashboard/my-orders')
 
+
+                        })
+
+                }
+            });
+
+        }
     }
-}
 
-if(loading)return <p>Loading..</p>
+    if (loading) return <p>Loading..</p>
 
 
-// console.log(totalamount)
-// console.log(product.price)
+    // console.log(totalamount)
+    // console.log(product.price)
 
     return (
         <div className='w-11/12 mx-auto  flex lg:flex-row flex-col items-center gap-10 md:gap-20 py-20'>
@@ -162,13 +169,13 @@ if(loading)return <p>Loading..</p>
 
                                     {/*product  name */}
                                     <label className="label">Product Title</label>
-                                    <input type="text" {...register('productname')} className="input w-full  bg-amber-50 text-black" defaultValue={product?.productName} readOnly/>
+                                    <input type="text" {...register('productname')} className="input w-full  bg-amber-50 text-black" defaultValue={product?.productName} readOnly />
 
 
                                     {/*Payment Info */}
 
                                     <label className="label">Payment Info</label>
-                                    <input type="text" {...register('payment')} className="input w-full  bg-amber-50 text-black" defaultValue={product?.paymentOptions} readOnly/>
+                                    <input type="text" {...register('payment')} className="input w-full  bg-amber-50 text-black" defaultValue={product?.paymentOptions} readOnly />
 
 
                                     {/* first name */}
@@ -207,7 +214,7 @@ if(loading)return <p>Loading..</p>
 
                                     {/* price */}
                                     <label className="label">Total price</label>
-                                    <input type="text" readOnly className="input w-full  bg-amber-50 text-black" value={totalamount}  />
+                                    <input type="text" readOnly className="input w-full  bg-amber-50 text-black" value={totalamount} />
 
                                     {/* number */}
                                     <label className="label">Contact Number
@@ -221,30 +228,30 @@ if(loading)return <p>Loading..</p>
                                     {errors.address && <p className='text-red-600 text-[16px]'>{errors.address.message}</p>}
 
                                     <label className="label">Additional Notes  </label>
-                                    <textarea   rows={4}  className="w-full rounded  bg-amber-50 text-black" {...register('notes')} placeholder="Additional Notes / Instructions"></textarea>
+                                    <textarea rows={4} className="w-full rounded  bg-amber-50 text-black" {...register('notes')} placeholder="Additional Notes / Instructions"></textarea>
 
 
 
 
-                                       {
-                                        product.paymentOptions==='Cash on Delivery'?  <motion.div
+                                    {
+                                        product.paymentOptions === 'Cash on Delivery' ? <motion.div
 
-                                        whileTap={{ scale: 0.9, y: 2 }}
-                                        transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                                            whileTap={{ scale: 0.9, y: 2 }}
+                                            transition={{ type: "spring", stiffness: 400, damping: 15 }}
 
-                                    >
-                                       <button value='cod' className=' button my-4 py-2 px-2 md:px-4 text-[14px] w-full md:text-[17px] gap-2 flex justify-center' >Cofirm Your Order  <span className='arrow py-2 px-3 '><FaArrowRight className='size-2 md:size-3' /></span></button>
-                                    </motion.div>:<motion.div
+                                        >
+                                            <button value='cod' className=' button my-4 py-2 px-2 md:px-4 text-[14px] w-full md:text-[17px] gap-2 flex justify-center' >Cofirm Your Order  <span className='arrow py-2 px-3 '><FaArrowRight className='size-2 md:size-3' /></span></button>
+                                        </motion.div> : <motion.div
 
-                                        whileTap={{ scale: 0.9, y: 2 }}
-                                        transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                                            whileTap={{ scale: 0.9, y: 2 }}
+                                            transition={{ type: "spring", stiffness: 400, damping: 15 }}
 
-                                    >
-                                        <button value='online'  className=' button my-4 py-2 px-2 md:px-4 text-[14px] w-full md:text-[17px] gap-2 flex justify-center' >Cofirm and Go for Pay  <span className='arrow py-2 px-3 '><FaArrowRight className='size-2 md:size-3' /></span></button>
-                                    </motion.div>
-                                       }
+                                        >
+                                            <button value='online' className=' button my-4 py-2 px-2 md:px-4 text-[14px] w-full md:text-[17px] gap-2 flex justify-center' >Cofirm and Go for Pay  <span className='arrow py-2 px-3 '><FaArrowRight className='size-2 md:size-3' /></span></button>
+                                        </motion.div>
+                                    }
                                     {/* button */}
-                                  
+
 
 
                                 </fieldset>

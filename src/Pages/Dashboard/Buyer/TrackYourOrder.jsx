@@ -7,71 +7,65 @@ import Loading from '../../../Components/Loading';
 const TrackYourOrder = () => {
   const { trackingId } = useParams();
 
-
-  const { data: trackings = [],isLoading } = useQuery({
+  // fetch tracking logs
+  const { data: trackings = [], isLoading } = useQuery({
     queryKey: ['tracking', trackingId],
-
     queryFn: async () => {
       const res = await axios.get(`http://localhost:3000/trackings/${trackingId}/logs`);
-
       return res.data;
-    }
+    },
   });
- 
-  if(isLoading)return <Loading></Loading>
 
-  console.log(trackingId)
-  console.log(trackings)
+  if (isLoading) return <Loading />;
+
+  const lastIndex = trackings.length - 1; // latest tracking
+
   return (
     <div className='text-white p-8'>
-     <h2 className="text-2xl  font-bold text-white mb-8">
-               Track Your Order Here.
-
-            </h2>
-            <p>Your Tracking Number: {trackingId}</p>
-
+      <h2 className="text-2xl font-bold mb-4">Track  Order</h2>
+      <p className="mb-8"> Tracking Number: <span className="font-bold">{trackingId}</span></p>
 
       <ul className="timeline timeline-vertical">
+        {trackings.map((track, index) => {
+          const isLatest = index === lastIndex;
+          return (
+            <li key={track._id}>
+              {/* Date + Location */}
+              <div className={`timeline-start ${isLatest ? 'font-bold text-green-400' : ''}`}>
+                {new Date(track.date).toLocaleString()}
+                {track.location && <p>{track.location}</p>}
+              </div>
 
+              {/* Timeline icon */}
+              <div className="timeline-middle">
+                <svg
+                  className={`h-5 w-5 ${isLatest ? 'text-green-500' : ''}`}
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
 
-        {
-          trackings.map(track => <li key={track._id}>
-            <div className="timeline-start ">{new Date(track.date).toLocaleString()}.
-              <p>{track.location}</p>
-            </div>
-            <div className="timeline-middle ">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                className="h-5 w-5"
+              {/* Details */}
+              <div
+                className={`timeline-end timeline-box ${isLatest ? 'bg-green-500 text-white' : 'text-black'}`}
               >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </div>
-            <div className="timeline-end timeline-box text-black">{track.
-details}</div>
-            <hr />
-          </li>
-          )
-        }
+                {track.details}
+                {isLatest && <p className="text-sm">(Latest)</p>}
+              </div>
 
+              <hr />
+            </li>
+          );
+        })}
       </ul>
     </div>
-
-
-
-
-
-
-
-
-
-
   );
 };
 
