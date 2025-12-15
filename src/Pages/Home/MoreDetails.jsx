@@ -8,13 +8,13 @@ import { FaArrowRight } from 'react-icons/fa';
 import useRole from '../../Components/CustomHooks/useRole';
 
 const MoreDetails = () => {
-    const { role,status } = useRole()
+    const { role, status } = useRole()
     const { id } = useParams()
-    console.log(id)
+
     const { data: product = [] } = useQuery({
         queryKey: ['our-products', id],
         queryFn: async () => {
-            const res = await axios(`http://localhost:3000/our-products/${id}`)
+            const res = await axios(`https://assignment-11-final-project-server.vercel.app/our-products/${id}`)
             return res.data
         }
     })
@@ -43,29 +43,29 @@ const MoreDetails = () => {
                         <p>Payment Options : {product.paymentOptions}</p>
 
                         {
-                            role.role==='Buyer' && role.status !==' suspend' ? <motion.div
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: false }}
-                            transition={{ duration: 0.6, delay: 0.4 }}
-                            className="text-center mt-10"
-                        >
-                            <motion.div
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.9, y: 2 }}
-                                transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                                className='w-[250px] '
+                            role.role === 'Buyer' && role.status !== 'suspend' ? <motion.div
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: false }}
+                                transition={{ duration: 0.6, delay: 0.4 }}
+                                className="text-center mt-10"
                             >
-                                <Link to='/order' state={product} className='button py-2 px-2 md:px-4 text-[14px] md:text-[17px] flex justify-center gap-2'>
-                                    Order Now
-                                    <button className='arrow py-2 px-3'>
-                                        <FaArrowRight size={12} />
-                                    </button>
-                                </Link>
-                            </motion.div>
-                        </motion.div> :<button disabled className=' button  my-4 py-2 px-2 md:px-4 text-[14px] w-[250px]  md:text-[17px] gap-2 flex justify-center' >You can't buy </button>
+                                <motion.div
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.9, y: 2 }}
+                                    transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                                    className='w-[250px] '
+                                >
+                                    <Link to='/order' state={product} className='button py-2 px-2 md:px-4 text-[14px] md:text-[17px] flex justify-center gap-2'>
+                                        Order Now
+                                        <button className='arrow py-2 px-3'>
+                                            <FaArrowRight size={12} />
+                                        </button>
+                                    </Link>
+                                </motion.div>
+                            </motion.div> : <button disabled className=' button  my-4 py-2 px-2 md:px-4 text-[14px] w-[250px]  md:text-[17px] gap-2 flex justify-center' >You can't buy </button>
                         }
-                       
+
                     </div>
                 </div>
 

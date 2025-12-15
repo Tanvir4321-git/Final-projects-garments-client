@@ -9,20 +9,35 @@ import useAxiosHook from '../../../Components/CustomHooks/useAxiosHook';
 
 import { use } from 'react';
 import { Authcontext } from '../../../Components/Context/Authcontext';
+import { toast } from 'react-toastify';
 
 const MyProfile = () => {
-    const axioshook=useAxiosHook()
-    const {user}=use(Authcontext)
-  
-  const {data:member=[],isLoading}=useQuery({
-    queryKey:['userProfile',user?.email],
-    queryFn:async()=>{
-  const res=  await axioshook(`/user-profile/${user?.email}`)
-  return res.data
+  const axioshook = useAxiosHook()
+  const { user } = use(Authcontext)
+  const { logOut } = use(Authcontext)
+
+
+  const { data: member = [], isLoading } = useQuery({
+    queryKey: ['userProfile', user?.email],
+    queryFn: async () => {
+      const res = await axioshook(`/user-profile/${user?.email}`)
+      return res.data
     }
   })
- 
-  if(isLoading)return <Loading></Loading>
+
+  const handlelogout = async () => {
+    try {
+      await logOut()
+      toast('successfuly log out')
+    } catch (err) {
+      toast(err?.message)
+    }
+
+
+  }
+
+
+  if (isLoading) return <Loading></Loading>
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-4">
@@ -31,12 +46,12 @@ const MyProfile = () => {
         <div className="bg-slate-800 rounded-2xl shadow-2xl border border-slate-700 overflow-hidden">
           {/* Header with Gradient */}
           <div className="h-32 bg-[#2ff95b]"></div>
-<div className="relative px-8 pb-8">
-      
-         
-          
+          <div className="relative px-8 pb-8">
+
+
+
             {/* Profile Image */}
-            
+
             <div className="flex justify-center -mt-16 mb-6">
               <div className="relative">
                 <div className="w-32 h-32 rounded-full overflow-hidden ring-4 ring-slate-800 shadow-xl">
@@ -59,9 +74,20 @@ const MyProfile = () => {
               <div className="inline-block">
                 <span className="px-4 py-1.5 bg-orange-500/20 text-orange-400 rounded-full text-sm font-semibold border border-orange-500/30">
                   {member.role}
-                </span>
+                </span> 
+                <span className="px-4 py-1.5 bg-red-500 ml-3 text-white rounded-full text-sm font-semibold border border-red-500">
+                  {member.status}
+                </span> 
               </div>
             </div>
+
+
+            {
+              member.feedback &&
+
+              <p className="text-red-600 text-center my-3 text-sm font-medium truncate">{member.
+                feedback}</p>
+            }
 
             {/* Email Section */}
             <div className="bg-slate-700/50 rounded-xl p-4 mb-6 border border-slate-600">
@@ -74,9 +100,19 @@ const MyProfile = () => {
                 <div className="flex-1 min-w-0">
                   <p className="text-xs text-slate-400 mb-1">Email Address</p>
                   <p className="text-white text-sm font-medium truncate">{member.email}</p>
+
+
                 </div>
+
               </div>
             </div>
+
+
+
+
+
+
+
 
             {/* Logout Button */}
             <motion.div
@@ -85,15 +121,15 @@ const MyProfile = () => {
               transition={{ type: "spring", stiffness: 400, damping: 15 }}
 
             >
-              <button className=' bg-red-600 text-white rounded my-4 py-2 px-2 md:px-4 text-[14px] w-full md:text-[17px] gap-2 flex justify-center' > Log Out  <span className='arrow py-2 px-3 '><FaArrowRight className='size-2 md:size-3' /></span></button>
+              <button onClick={handlelogout} className=' bg-red-600 text-white rounded my-4 py-2 px-2 md:px-4 text-[14px] w-full md:text-[17px] gap-2 flex justify-center' > Log Out  <span className='arrow py-2 px-3 '><FaArrowRight className='size-2 md:size-3' /></span></button>
             </motion.div>
 
-          </div> 
-          
-        
+          </div>
 
-       
-          
+
+
+
+
         </div>
       </div>
     </div>

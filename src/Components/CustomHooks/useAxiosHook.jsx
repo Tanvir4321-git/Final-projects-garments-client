@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router';
 import { Authcontext } from '../Context/Authcontext';
 
 const axioinstance = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: 'https://assignment-11-final-project-server.vercel.app',
 
 });
 
@@ -26,7 +26,7 @@ const useAxiosHook = () => {
     const resinterceptor = axioinstance.interceptors.response.use((response) => {
       return response
     }, (error) => {
-      
+
 
       const statuscode = error.response.status
       if (statuscode === 401 || statuscode === 403) {

@@ -11,14 +11,14 @@ import Loading from '../Components/Loading';
 const AllProducts = () => {
 
     const { data: products = [], isLoading } = useQuery({
-        
+
         queryKey: ['all-products'],
         queryFn: async () => {
-            const res = await axios('http://localhost:3000/all-products')
+            const res = await axios('https://assignment-11-final-project-server.vercel.app/all-products')
             return res.data
         }
     })
-console.log(products)
+    console.log(products)
     if (isLoading) return <Loading></Loading>
 
 
@@ -49,7 +49,7 @@ console.log(products)
                             //     y: -15,
                             //     rotateX: 2,
                             //     rotateY: 2,
-                             
+
                             //     borderColor: "#f80606"
                             // }}
                             style={{
@@ -77,7 +77,7 @@ console.log(products)
 
                             {/* short desc */}
                             <p className='text-gray-400 text-sm leading-relaxed mb-5'>
-                               Quentity: {product.availableQuantity}
+                                Quentity: {product.availableQuantity}
                             </p>
 
                             {/* button */}

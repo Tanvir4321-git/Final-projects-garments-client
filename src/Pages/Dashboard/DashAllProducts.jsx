@@ -111,52 +111,65 @@ const handleUpdate = async (data, id) => {
             <h2 className="text-2xl  font-bold text-white mb-8">
                 All Products
             </h2>
-            <h3>Total Orders:{products.length}</h3>
+            <h3>Total Products: {products.length}</h3>
 
 
 
 
-            <div className="overflow-x-auto mt-8">
-                <table className="table bg-">
+            <div className="overflow-x-auto mt-8 rounded-lg border border-slate-700">
+                <table className="table w-full">
                     {/* head */}
-                    <thead className='text-white  '>
+                    <thead className='text-white bg-slate-800'>
                         <tr className=''>
-                            <th> Image </th>
-                            <th>Product Name</th>
-                            <th> Price</th>
-                            <th>Category</th>
-                            <th>Created By</th>
-                            <th>Show on Home</th>
-                            <th>Update</th>
-                            <th>Actions</th>
+                            <th className="text-sm font-semibold"> Image </th>
+                            <th className="text-sm font-semibold">Product Name</th>
+                            <th className="text-sm font-semibold"> Price</th>
+                            <th className="text-sm font-semibold">Category</th>
+                            <th className="text-sm font-semibold">Created By</th>
+                            <th className="text-sm font-semibold">Show on Home</th>
+                            <th className="text-sm font-semibold">Update</th>
+                            <th className="text-sm font-semibold">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {/* row 1 */}
                         {
-                            products.map((product, i) => <tr key={i}>
-                                <th><img className='w-10 rounded' src={product.image} alt="" /></th>
-                                <td>{product.productName}</td>
-                                <td>{product.price}</td>
-                                <td>{product.category}</td>
-                                <td>{product.createdBy}</td>
+                            products.map((product, i) => <tr key={i} className="hover:bg-slate-800/50 border-b border-slate-700">
+                                <th><img className='w-12 h-12 rounded object-cover' src={product.image} alt="" /></th>
+                                <td className="text-sm">{product.productName}</td>
+                                <td className="text-sm">{product.price}</td>
+                                <td className="text-sm">{product.category}</td>
+                                <td className="text-sm">{product.createdBy}</td>
 
                                 {
-                                      product.showonHome==='added'?<td>  <span className='text-white'>Added to the home</span></td>: <td>
-                                    Show 
-                                    <input
-                                        type="checkbox"
-                                        onChange={(e) => handleCheck(e, product)}
-                                    />
+                                      product.showonHome==='added'?<td><span className='px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-semibold border border-green-500/30'>Added to home</span></td>: <td>
+                                    <label className="flex items-center gap-2 cursor-pointer">
+                                        <input
+                                            type="checkbox"
+                                            onChange={(e) => handleCheck(e, product)}
+                                            className="checkbox checkbox-success checkbox-sm"
+                                        />
+                                        <span className="text-xs text-slate-400">Show</span>
+                                    </label>
                                 </td>
                                 }
                                
-                                <td><button onClick={() => handlemodalOpen(product)} className='btn'>Update</button></td>
-                                <td className='btn'><button onClick={() => handleDelete(product)}>Delete</button></td>
-
-
-
-
+                                <td>
+                                    <button 
+                                        onClick={() => handlemodalOpen(product)} 
+                                        className='px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-sm font-semibold transition-colors'
+                                    >
+                                        Update
+                                    </button>
+                                </td>
+                                <td>
+                                    <button 
+                                        onClick={() => handleDelete(product)}
+                                        className='px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg text-sm font-semibold transition-colors'
+                                    >
+                                        Delete
+                                    </button>
+                                </td>
 
                             </tr>)
                         }
@@ -223,16 +236,7 @@ const handleUpdate = async (data, id) => {
                                   {/* ////////// */}
                                   <div className='space-y-3'>
   
-                                      {/* Images */}
-                                      {/* <label className="label">Images Upload</label>
-                                      <input
-                                        // defaultValue={product.image} 
-                                          type="file"
-                                          multiple
-                                          {...register('image', { required: 'Upload images' })}
-                                          className="file-input w-full bg-amber-50 text-black"
-                                      />
-                                      {errors.image && <p className='text-red-600 text-[16px]'>{errors.image.message}</p>} */}
+                                     
   
                                       {/* Demo Video */}
                                       <label className="label">Demo Video Link (Optional)</label>

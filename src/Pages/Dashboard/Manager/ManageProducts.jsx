@@ -17,14 +17,14 @@ const ManageProducts = () => {
     const { user } = use(Authcontext)
     const [selectedProduct, setSelectedProduct] = useState(null);
     const { register, handleSubmit, formState: { errors } } = useForm()
-     const [search,setSearch]=useState('')
+    const [search, setSearch] = useState('')
 
     const { data: products = [], isLoading, refetch } = useQuery({
-        queryKey: ['manage-product', user?.email,search],
+        queryKey: ['manage-product', user?.email, search],
         queryFn: async () => {
             const res = await axioshook(`/manage-products?email=${user?.email}&search=${search}`)
-          
-          
+
+
             return res.data
         }
     })
@@ -99,62 +99,80 @@ const ManageProducts = () => {
 
     return (
         <div className='text-white p-8'>
-                <h2 className="text-2xl  font-bold text-white mb-8">
-                    Manage Products
-                </h2>
-            <div className='flex justify-between'>
-            <h3>Total products: {products.length}</h3>
+            <h2 className="text-2xl  font-bold text-white mb-8">
+                Manage Products
+            </h2>
+            <div className='flex items-center md:flex-row flex-col justify-between mb-4'>
+                <h3 className="text-lg">Total Products: <span className=" font-bold">{products.length}</span></h3>
 
-             <label class="input">
-                    <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <label className="input input-bordered flex items-center gap-2 bg-slate-800 border-slate-600">
+                    <svg className="h-4 w-4 opacity-70" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <g
-                            stroke-linejoin="round"
-                            stroke-linecap="round"
-                            stroke-width="2.5"
+                            strokeLinejoin="round"
+                            strokeLinecap="round"
+                            strokeWidth="2.5"
                             fill="none"
-                            stroke="black"
+                            stroke="currentColor"
                         >
                             <circle cx="11" cy="11" r="8"></circle>
                             <path d="m21 21-4.3-4.3"></path>
                         </g>
                     </svg>
-                    <input onChange={(e)=>setSearch(e.target.value)} className='text-black' type="search"  required placeholder="Search" />
-                </label>   
+                    <input 
+                        onChange={(e) => setSearch(e.target.value)} 
+                        className='text-white bg-transparent' 
+                        type="search" 
+                        placeholder="Search products..." 
+                    />
+                </label>
             </div>
 
 
-            <div className="overflow-x-auto mt-8">
-                <table className="table bg-">
+            <div className="overflow-x-auto mt-8 rounded-lg border border-slate-700">
+                <table className="table w-full">
                     {/* head */}
-                    <thead className='text-white  '>
+                    <thead className='text-white bg-slate-800'>
                         <tr className=''>
-                            <th> Image </th>
-                            <th>Product Name</th>
-                            <th> Price</th>
-                            <th>Payment mode</th>
-                            <th>Update</th>
-                            <th>Actions</th>
+                            <th className="text-sm font-semibold"> Image </th>
+                            <th className="text-sm font-semibold">Product Name</th>
+                            <th className="text-sm font-semibold"> Price</th>
+                            <th className="text-sm font-semibold">Payment mode</th>
+                            <th className="text-sm font-semibold">Update</th>
+                            <th className="text-sm font-semibold">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {/* row 1 */}
                         {
-                            products.map((product, i) => <tr key={i}>
-                                <th><img className='w-10 rounded' src={product.image} alt="" /></th>
-                                <td>{product.productName}</td>
-                                <td>{product.price}</td>
-                                <td>{product.paymentOptions}</td>
-                                <td><button onClick={() => handlemodalOpen(product)} className='btn'>Update</button></td>
-                                <td className='btn'><button onClick={() => handleDelete(product)}>Delete</button></td>
-
-
-
-                                {/* 
-                                */}
-
-
-
-
+                            products.map((product, i) => <tr key={i} className="hover:bg-slate-800/50 border-b border-slate-700">
+                                <th><img className='w-12 h-12 rounded object-cover' src={product.image} alt="" /></th>
+                                <td className="text-sm">{product.productName}</td>
+                                <td className="text-sm">{product.price}</td>
+                                <td>
+                                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                                        product.paymentOptions === 'Cash on Delivery'
+                                            ? 'bg-green-500/20 text-green-400 border border-green-500/30'
+                                            : 'bg-orange-500/20 text-orange-400 border border-orange-500/30'
+                                    }`}>
+                                        {product.paymentOptions}
+                                    </span>
+                                </td>
+                                <td>
+                                    <button 
+                                        onClick={() => handlemodalOpen(product)} 
+                                        className='px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-sm font-semibold transition-colors'
+                                    >
+                                        Update
+                                    </button>
+                                </td>
+                                <td>
+                                    <button 
+                                        onClick={() => handleDelete(product)}
+                                        className='px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg text-sm font-semibold transition-colors'
+                                    >
+                                        Delete
+                                    </button>
+                                </td>
 
                             </tr>)
                         }

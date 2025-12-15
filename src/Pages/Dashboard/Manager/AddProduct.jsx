@@ -8,25 +8,27 @@ import useAxiosHook from '../../../Components/CustomHooks/useAxiosHook';
 import { imageUpload } from '../../../Components/utlitis';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
+import useRole from '../../../Components/CustomHooks/useRole';
 const AddProduct = () => {
     const { user } = use(Authcontext)
     const axioshook = useAxiosHook()
-    const navigate=useNavigate()
+    const navigate = useNavigate()
+    const { role, status } = useRole()
 
     const { register, handleSubmit, formState: { errors } } = useForm()
 
     const handleAddProduct = async (data) => {
         try {
 
-            const images = data.image; 
+            const images = data.image;
 
-        const imageURLs = await Promise.all(
-            [...images].map(async (img) => await imageUpload(img))
-        );
+            const imageURLs = await Promise.all(
+                [...images].map(async (img) => await imageUpload(img))
+            );
 
 
             const productInfo = {
-                ...data,image:imageURLs, createdBy: user?.email
+                ...data, image: imageURLs, createdBy: user?.email
             }
             await axioshook.post('/products', productInfo)
             navigate('/dashboard/manage-products')
@@ -40,6 +42,9 @@ const AddProduct = () => {
 
     return (
         <div className='p-8'>
+
+
+
             <h2 className="text-2xl text-center  font-bold text-white mb-14">
                 Add New Products
             </h2>
@@ -50,7 +55,7 @@ const AddProduct = () => {
                     <div className="card-body">
                         <form onSubmit={handleSubmit(handleAddProduct)}>
 
-                            <fieldset className="fieldset flex gap-20  text-white text-[18px]">
+                            <fieldset className="fieldset flex lg:flex-row flex-col gap-20  text-white text-[18px]">
                                 <div className='space-y-3'>
                                     {/* Product Name */}
                                     <label className="label">Product Name </label>
@@ -168,17 +173,29 @@ const AddProduct = () => {
                                     {errors.description && <p className='text-red-600 text-[16px]'>{errors.description.message}</p>}
 
                                     {/* Button */}
-                                    <motion.div
-                                        whileTap={{ scale: 0.9, y: 2 }}
-                                        transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                                    >
-                                        <button className='button my-4 py-2 px-2 md:px-4 text-[14px] w-full md:text-[17px] gap-2 flex justify-center'>
-                                            Add Product
-                                            <span className='arrow py-2 px-3 '>
-                                                <FaArrowRight className='size-2 md:size-3' />
-                                            </span>
-                                        </button>
-                                    </motion.div>
+                                    {
+                                        role.role === 'Manager' && role.status !== 'suspend' ? <motion.div
+                                            whileTap={{ scale: 0.9, y: 2 }}
+                                            transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                                        >
+                                            <button className='button my-4 py-2 px-2 md:px-4 text-[14px] w-full md:text-[17px] gap-2 flex justify-center'>
+                                                 Add Product
+                                                <span className='arrow py-2 px-3 '>
+                                                    <FaArrowRight className='size-2 md:size-3' />
+                                                </span>
+                                            </button>
+                                        </motion.div> : <motion.div
+                                            whileTap={{ scale: 0.9, y: 2 }}
+                                            transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                                        >
+                                            <button disabled className='button my-4 py-2 px-2 md:px-4 text-[14px] w-full md:text-[17px] gap-2 flex justify-center'>
+                                              You can't Add Product
+                                                <span className='arrow py-2 px-3 '>
+                                                    <FaArrowRight className='size-2 md:size-3' />
+                                                </span>
+                                            </button>
+                                        </motion.div>
+                                    }
                                 </div>
 
 

@@ -11,7 +11,7 @@ const TrackYourOrder = () => {
   const { data: trackings = [], isLoading } = useQuery({
     queryKey: ['tracking', trackingId],
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:3000/trackings/${trackingId}/logs`);
+      const res = await axios.get(`https://assignment-11-final-project-server.vercel.app/trackings/${trackingId}/logs`);
       return res.data;
     },
   });
@@ -33,7 +33,16 @@ const TrackYourOrder = () => {
               {/* Date + Location */}
               <div className={`timeline-start ${isLatest ? 'font-bold text-green-400' : ''}`}>
                 {new Date(track.date).toLocaleString()}
-                {track.location && <p>{track.location}</p>}
+                {track.location && (<p>  <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(track.location)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 underline cursor-pointer"
+                >
+                  {track.location}
+                </a>
+                </p>
+                )}
+
               </div>
 
               {/* Timeline icon */}

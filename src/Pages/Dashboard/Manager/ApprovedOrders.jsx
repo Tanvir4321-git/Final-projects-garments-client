@@ -47,43 +47,37 @@ const ApprovedOrders = () => {
     }
 console.log(selectedProduct)
 if(loading)return<Loading></Loading>
-console.log(selectedProduct?.
-trackingId)
+console.log(selectedProduct?.trackingId)
 
     return (
         <div className='text-white p-8'>
             <h2 className="text-2xl  font-bold text-white mb-8">
                 Approved Orders
             </h2>
-            <h3>Total Approved Orders Orders: {orders.length}</h3>
+            <h3 className="text-lg mb-4">Total Approved Orders: <span className=" font-bold">{orders.length}</span></h3>
 
-            <div className="overflow-x-auto mt-8">
-                <table className="table ">
+            <div className="overflow-x-auto mt-8 rounded-lg border border-slate-700">
+                <table className="table w-full">
                     {/* head */}
-                    <thead className='text-white  '>
+                    <thead className='text-white bg-slate-800'>
                         <tr className=''>
-
-                            <th>Order ID </th>
-                            <th>User</th>
-                            <th>Product</th>
-                            <th>Quantity</th>
-
-                            <th>Order Date</th>
-                            <th>Actions</th>
+                            <th className="text-sm font-semibold">Tracking ID </th>
+                            <th className="text-sm font-semibold">User</th>
+                            <th className="text-sm font-semibold">Product</th>
+                            <th className="text-sm font-semibold">Quantity</th>
+                            <th className="text-sm font-semibold">Order Date</th>
+                            <th className="text-sm font-semibold">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {/* row 1 */}
                         {
-                            orders.map((order, i) => <tr key={i} >
-
-                                <td>{order.
-trackingId}</td>
-                                <td>{order.email}</td>
-                                <td>{order.productname}</td>
-                                <td>{order.quantity}</td>
-
-                                <td>
+                            orders.map((order, i) => <tr key={i} className="hover:bg-slate-800/50 border-b border-slate-700">
+                                <td className="text-sm font-mono">{order.trackingId}</td>
+                                <td className="text-sm">{order.email}</td>
+                                <td className="text-sm">{order.productname}</td>
+                                <td className="text-sm">{order.quantity}</td>
+                                <td className="text-sm">
                                     {new Date(order.timestamp).toLocaleDateString('en-GB', {
                                         day: '2-digit',
                                         month: 'short',
@@ -91,17 +85,23 @@ trackingId}</td>
                                     })}
                                 </td>
                                 <td>
-
-                                    <button onClick={() => handlemodalOpen(order)} className=' ml-2 bg-white p-2 text-black rounded'>Add Tracking</button>
-
-                                    <button onClick={() => viewemodalOpen(order)} className=' ml-2 bg-white p-2 text-black rounded'>View Tracking</button>
+                                    <div className="flex gap-2">
+                                        <button 
+                                            onClick={() => handlemodalOpen(order)} 
+                                            className='px-3 py-1.5 bg-orange-500 hover:bg-orange-600 text-white rounded-lg text-xs font-semibold transition-colors'
+                                        >
+                                            Add Tracking
+                                        </button>
+                                        <button 
+                                            onClick={() => viewemodalOpen(order)} 
+                                            className='px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-xs font-semibold transition-colors'
+                                        >
+                                            View Tracking
+                                        </button>
+                                    </div>
                                 </td>
-
-
                             </tr>)
                         }
-
-
                     </tbody>
                 </table>
 
