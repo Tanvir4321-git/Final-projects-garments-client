@@ -29,6 +29,7 @@ import TrackYourOrder from '../Pages/Dashboard/Buyer/TrackYourOrder';
 import AdAllorder from '../Pages/Dashboard/AdAllorder';
 import MyProfile from '../Pages/Dashboard/Profile/MyProfile';
 import BuyerRoute from '../Components/PrivateRoute/BuyerRoute';
+import ContactUs from '../Pages/ContactUs';
 
 
 
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
       {
         path: '/about',
         Component: About
+      },
+      {
+        path: '/contact',
+        Component: ContactUs
       },
       {
         path: '/more-details/:id',
