@@ -28,6 +28,7 @@ import ApprovedOrders from '../Pages/Dashboard/Manager/ApprovedOrders';
 import TrackYourOrder from '../Pages/Dashboard/Buyer/TrackYourOrder';
 import AdAllorder from '../Pages/Dashboard/AdAllorder';
 import MyProfile from '../Pages/Dashboard/Profile/MyProfile';
+import BuyerRoute from '../Components/PrivateRoute/BuyerRoute';
 
 
 
@@ -58,7 +59,12 @@ export const router = createBrowserRouter([
       },
       {
         path: '/order',
-        Component: OrderFrom
+        element:<PrivateROute>
+          <BuyerRoute>
+<OrderFrom></OrderFrom>
+          </BuyerRoute>
+        </PrivateROute>
+        
       }
 
     ]
@@ -70,11 +76,17 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/register',
-        Component: Register
+        element:<PrivateROute>
+          <Register></Register>
+        </PrivateROute>
+        
       },
       {
         path: '/login',
-        Component: Login
+        element:<PrivateROute>
+          <Login></Login>
+        </PrivateROute>
+        
 
       }
     ]
@@ -137,7 +149,10 @@ export const router = createBrowserRouter([
       },
       {
         path:'my-orders',
-        Component:Myorder
+        element:<BuyerRoute>
+          <Myorder></Myorder>
+        </BuyerRoute>
+       
       },
        {
         path:'order/:trackingId',
