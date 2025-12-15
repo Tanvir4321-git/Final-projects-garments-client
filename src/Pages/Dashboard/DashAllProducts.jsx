@@ -19,9 +19,9 @@ const DashAllProducts = () => {
      const { register, handleSubmit,  formState: { errors } } = useForm()
 
     const { data: products = [], isLoading, refetch } = useQuery({
-        queryKey: ['all-products'],
+        queryKey: ['dashboard-all-products'],
         queryFn: async () => {
-            const res = await axioshook('/all-products')
+            const res = await axioshook('/dashboard-all-products')
             return res.data
         }
     })

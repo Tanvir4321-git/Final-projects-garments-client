@@ -119,7 +119,7 @@ const steps = [
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
             className='w-[250px] mx-auto'
           >
-            <Link to='/about' className='button py-2 px-2 md:px-4 text-[14px] md:text-[17px] gap-2'>
+            <Link to='/all-products' className='button py-2 px-2 md:px-4 text-[14px] md:text-[17px] gap-2'>
               Start Shopping Now
               <button className='arrow py-2 px-3'>
                 <FaArrowRight size={12}/>
