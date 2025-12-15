@@ -43,7 +43,7 @@ const MoreDetails = () => {
                         <p>Payment Options : {product.paymentOptions}</p>
 
                         {
-                            role.role === 'Buyer' && role.status !== 'suspend' ? <motion.div
+                            role.role === 'Buyer' && role.status !== 'suspended' ? <motion.div
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
                                 viewport={{ once: false }}

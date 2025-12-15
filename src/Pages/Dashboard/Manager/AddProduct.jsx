@@ -174,7 +174,7 @@ const AddProduct = () => {
 
                                     {/* Button */}
                                     {
-                                        role.role === 'Manager' && role.status !== 'suspend' ? <motion.div
+                                        role.role === 'Manager' && role.status !== 'suspended' ? <motion.div
                                             whileTap={{ scale: 0.9, y: 2 }}
                                             transition={{ type: "spring", stiffness: 400, damping: 15 }}
                                         >

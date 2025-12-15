@@ -145,7 +145,7 @@ if(!feedback.trim()) {
               <span
                 className={`px-2 py-1 rounded-full text-xs font-semibold ${user.status === 'approved'
                   ? 'bg-green-500/20 text-green-400 border border-green-500/30'
-                  : user.status === 'suspend'
+                  : user.status === 'suspended'
                     ? 'bg-red-500/20 text-red-400 border border-red-500/30'
                     : 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
                   }`}
@@ -167,7 +167,7 @@ if(!feedback.trim()) {
               </button>
               <button
                 className="btn btn-sm bg-red-500 hover:bg-red-600 text-white flex-1"
-                disabled={user.status === 'suspend'}
+                disabled={user.status === 'suspended'}
                 onClick={() => handlerejecte(user)}
               >
                 Suspend
@@ -201,7 +201,7 @@ if(!feedback.trim()) {
                   <span
                     className={`px-2 py-1 rounded-full text-xs font-semibold ${user.status === 'approved'
                       ? 'bg-green-500/20 text-green-400 border border-green-500/30'
-                      : user.status === 'suspend'
+                      : user.status === 'suspended'
                         ? 'bg-red-500/20 text-red-400 border border-red-500/30'
                         : 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
                       }`}
@@ -221,7 +221,7 @@ if(!feedback.trim()) {
                     </button>
                     <button
                       className="btn btn-sm bg-red-500 hover:bg-red-600 text-white"
-                      disabled={user.status === 'suspend'}
+                      disabled={user.status === 'suspended'}
                       onClick={() => handlerejecte(user)}
                     >
                       Suspend

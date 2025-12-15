@@ -35,7 +35,7 @@ const PendingOrder = () => {
     }
 
     const hadleapprove = async (order) => {
-        if( role.role!=='Manager' || role.status ==='suspend' ){
+        if( role.role!=='Manager' || role.status ==='suspended' ){
             return toast('You are suspended, you can not Approve')
         }
         await statusUpdate(order, 'approved')
@@ -44,7 +44,7 @@ const PendingOrder = () => {
     }
 
     const hadlereject = async (order) => {
-        if( role.role!=='Manager' || role.status ==='suspend' ){
+        if( role.role!=='Manager' || role.status ==='suspended' ){
             return toast('You are suspended, you can not Reject')
         }
         await statusUpdate(order, 'reject')
