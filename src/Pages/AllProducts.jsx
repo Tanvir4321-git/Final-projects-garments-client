@@ -7,18 +7,27 @@ import { Link } from 'react-router';
 import { motion } from "framer-motion";
 import { FaArrowRight } from 'react-icons/fa';
 import Loading from '../Components/Loading';
+import { useState } from 'react';
 
 const AllProducts = () => {
+    
+const limit=8
+const [currentpage, setcurrentPage] = useState(0);
+    const { data= [], isLoading } = useQuery({
 
-    const { data: products = [], isLoading } = useQuery({
-
-        queryKey: ['all-products'],
+        queryKey: ['all-products',currentpage],
         queryFn: async () => {
-            const res = await axios('https://assignment-11-final-project-server.vercel.app/all-products')
+            const res = await axios(`https://assignment-11-final-project-server.vercel.app/all-products?limit=${limit}&skip=${currentpage*limit}`)
+           
             return res.data
         }
     })
-    console.log(products)
+
+const products=data.result
+const totalporducts=data.totalporduct
+const totalPage= Math.ceil( totalporducts/ limit) 
+
+
     if (isLoading) return <Loading></Loading>
 
 
@@ -102,7 +111,19 @@ const AllProducts = () => {
                 }
 
             </div>
+  <div className='flex gap-4 justify-center mt-8'>
 
+{
+  currentpage>0 && <button  onClick={()=>setcurrentPage(currentpage-1)} className="btn ">Prev</button>
+ }
+
+    {
+ [...Array(totalPage).keys()].map(i=><button onClick={()=>setcurrentPage(i)} className={`btn ${i===currentpage && 'bg-blue-600'}`}>{i+1}</button>)
+    }
+   {
+  currentpage<totalPage-1 && <button onClick={()=>setcurrentPage(currentpage+1)} className="btn ">Next</button>
+ }
+  </div>
         </div>
     );
 };
