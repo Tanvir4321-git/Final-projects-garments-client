@@ -74,7 +74,7 @@ const CustomerReviews = () => {
   };
 
   return (
-    <div className="min-h-screen py-20 px-4">
+    <div className="min-h-screen py-10 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div

@@ -30,10 +30,10 @@ const useAxiosHook = () => {
 
       const statuscode = error.response.status
       if (statuscode === 401 || statuscode === 403) {
-        logOut()
-          .then(() => {
-            navigate('/login')
-          })
+      
+          
+            navigate('/')
+          
       }
 
 

@@ -37,9 +37,9 @@ const DashAllProducts = () => {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
+        }).then(async(result) => {
             if (result.isConfirmed) {
-                axioshook.delete(`/delete/${product._id}`)
+               await axioshook.delete(`/delete/${product._id}`)
                 refetch()
                 Swal.fire({
                     title: "Deleted!",
@@ -56,7 +56,7 @@ const DashAllProducts = () => {
 
     const handleCheck=async(e,product)=>{
           if (e.target.checked){
-            
+          
            await axioshook.post('/our-products',product)
            refetch()
             Swal.fire("Added to home!")
@@ -64,6 +64,18 @@ const DashAllProducts = () => {
 
         // setadded([...added, product._id])
     }
+    const handleRemove=async(e,product)=>{
+          if (e.target.checked){
+          
+           await axioshook.delete(`/remove-from-homepage/${product._id}`)
+           refetch()
+            Swal.fire("Remove from home!")
+          }
+
+        
+    }
+
+    
 
 const handlemodalOpen=(product)=>{
     setSelectedProduct(product);
@@ -142,7 +154,19 @@ const handleUpdate = async (data, id) => {
                                 <td className="text-sm">{product.createdBy}</td>
 
                                 {
-                                      product.showonHome==='added'?<td><span className='px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-semibold border border-green-500/30'>Added to home</span></td>: <td>
+                                      product.showonHome==='added'?<><td className='flex gap-2'><span className='px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-semibold border border-green-500/30'>Added to home</span>
+                                      
+                                        <label className="flex items-center gap-2 cursor-pointer">
+                                        <input
+                                            type="checkbox"
+                                            onChange={(e) => handleRemove(e, product)}
+                                            className="checkbox ml-2 border-red-600 checkbox-success checkbox-sm"
+                                        />
+                                        <span className="text-xs text-slate-400">Remove</span>
+                                    </label>
+                                      
+                                      </td>  
+                                      </>: <td>
                                     <label className="flex items-center gap-2 cursor-pointer">
                                         <input
                                             type="checkbox"
@@ -153,7 +177,7 @@ const handleUpdate = async (data, id) => {
                                     </label>
                                 </td>
                                 }
-                               
+                              
                                 <td>
                                     <button 
                                         onClick={() => handlemodalOpen(product)} 
