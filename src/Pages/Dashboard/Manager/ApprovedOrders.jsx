@@ -49,6 +49,7 @@ if(loading)return<Loading></Loading>
 
     return (
         <div className='text-white p-8'>
+                  <title>Haque Garments-Approve Page</title>
             <h2 className="text-2xl  font-bold text-white mb-8">
                 Approved Orders
             </h2>

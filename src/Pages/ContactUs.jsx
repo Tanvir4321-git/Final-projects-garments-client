@@ -34,6 +34,7 @@ export default function ContactUs() {
 
   return (
     <div className="min-h-screen bg-[#0f1729] text-white">
+            <title>Haque Garments- Contact Page</title>
       {/* Hero Section */}
       <div className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-orange-600/10 via-[#0f1729] to-blue-900/10"></div>

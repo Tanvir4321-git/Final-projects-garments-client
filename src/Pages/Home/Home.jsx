@@ -16,6 +16,7 @@ import OurTrustedPartener from './OurTrustedPartener';
 const Home = () => {
     return (
         <div>
+                  <title>Haque Garments-Home</title>
             <Banner></Banner>
             <OurProducts></OurProducts>
             <HowitWorks></HowitWorks>

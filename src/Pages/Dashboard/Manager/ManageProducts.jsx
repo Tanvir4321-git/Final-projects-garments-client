@@ -99,6 +99,7 @@ const ManageProducts = () => {
 
     return (
         <div className='text-white p-8'>
+                  <title>Haque Garments- Manage Order Page</title>
             <h2 className="text-2xl  font-bold text-white mb-8">
                 Manage Products
             </h2>

@@ -127,6 +127,7 @@ availableQuantity-data.quantity
 
     return (
         <div className='w-11/12 mx-auto  flex lg:flex-row flex-col items-center gap-10 md:gap-20 py-20'>
+                  <title>Haque Garments- Order Form</title>
             <div className='lg:w-[40%] w-full'>
                 <motion.h2 initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}

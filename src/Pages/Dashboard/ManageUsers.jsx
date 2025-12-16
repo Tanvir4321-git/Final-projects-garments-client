@@ -91,6 +91,7 @@ if(!feedback.trim()) {
 
   return (
     <div className='text-white p-4 md:p-8'>
+            <title>Haque Garments- Manage users Page</title>
       <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-8">
         Manage Users
       </h2>

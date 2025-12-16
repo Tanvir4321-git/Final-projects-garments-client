@@ -120,6 +120,7 @@ const handleUpdate = async (data, id) => {
 
     return (
         <div className='text-white p-8'>
+                  <title>Haque Garments- all Products</title>
             <h2 className="text-2xl  font-bold text-white mb-8">
                 All Products
             </h2>

@@ -33,7 +33,7 @@ const totalPage= Math.ceil( totalporducts/ limit)
 
     return (
         <div className='w-11/12 mx-auto py-20' >
-            <title>All Products</title>
+                <title>Haque Garments- All Products</title>
             <h2 className="text-5xl text-center font-bold text-white mb-14">
                 All <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-500 to-red-500">Products</span>
             </h2>

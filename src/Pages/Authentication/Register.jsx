@@ -45,6 +45,7 @@ const Register = () => {
 
     return (
         <div >
+                  <title>Haque Garments- Register Page</title>
             <div className="hero bg-white/5 border-2 rounded-xl border-[#36465c] backdrop-blur-sm  min-h-screen">
 
 

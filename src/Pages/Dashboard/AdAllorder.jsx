@@ -29,6 +29,7 @@ const AdAllorder = () => {
 
     return (
         <div className='text-white p-8'>
+                  <title>Haque Garments- All Order Page</title>
             <h2 className="text-2xl  font-bold text-white mb-8">
                 All Orders
             </h2>

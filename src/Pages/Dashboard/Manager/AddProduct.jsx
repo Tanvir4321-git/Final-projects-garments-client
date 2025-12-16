@@ -43,7 +43,7 @@ const AddProduct = () => {
     return (
         <div className='p-8'>
 
-
+      <title>Haque Garments-Product Add Page</title>
 
             <h2 className="text-2xl text-center  font-bold text-white mb-14">
                 Add New Products

@@ -28,6 +28,7 @@ const PaymentSuccess = () => {
 
     return (
         <div className='p-8 text-white'>
+                  <title>Haque Garments- Payment success</title>
             payment successfull
             <p>Trackig id : {paymentinfo.trackingId}</p>
             <p>Transaction id : {paymentinfo.transactionId}</p>

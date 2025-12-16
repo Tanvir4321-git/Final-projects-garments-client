@@ -65,6 +65,7 @@ navigate('/')
 
     return (
         <div >
+                  <title>Haque Garments- Login Page</title>
             <div className="hero bg-white/5 border-2 rounded-xl border-[#36465c] backdrop-blur-sm  min-h-screen">
 
 

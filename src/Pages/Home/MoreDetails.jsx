@@ -21,7 +21,7 @@ const MoreDetails = () => {
 
     return (
         <div >
-
+      <title>Haque Garments- Details</title>
             <div className='w-11/12 mx-auto py-16 text-white flex items-center gap-3 md:gap-8 lg:flex-row flex-col  '>
                 <div className=" lg:w-1/2  w-full">
                     <img className='rounded-xl h-[400px] w-full md:h-[500px]' src={product.image} alt="" />

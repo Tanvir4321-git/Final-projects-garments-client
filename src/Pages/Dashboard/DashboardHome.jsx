@@ -36,6 +36,7 @@ const DashboardHome = () => {
 
     return (
         <div className='p-8'>
+                <title>Haque Garments- home Page</title>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {steps.map((step, index) => (
             <motion.div

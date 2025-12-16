@@ -22,7 +22,8 @@ const TrackYourOrder = () => {
 
   return (
     <div className='text-white p-8'>
-      <h2 className="text-2xl font-bold mb-4">Track  Order</h2>
+
+            <title>Haque Garments- Track Order Page</title><h2 className="text-2xl font-bold mb-4">Track  Order</h2>
       <p className="mb-8"> Tracking Number: <span className="font-bold">{trackingId}</span></p>
 
       <ul className="timeline timeline-vertical">

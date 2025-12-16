@@ -41,6 +41,7 @@ const MyProfile = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-4">
+           <title>Haque Garments- My Profile </title>
       <div className="w-full max-w-md">
         {/* Profile Card */}
         <div className="bg-slate-800 rounded-2xl shadow-2xl border border-slate-700 overflow-hidden">
