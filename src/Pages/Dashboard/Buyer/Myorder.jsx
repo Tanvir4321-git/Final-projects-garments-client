@@ -5,6 +5,7 @@ import useAxiosHook from '../../../Components/CustomHooks/useAxiosHook';
 import { Link } from 'react-router';
 import ViewDetailsModal from './ViewDetailsModal';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 const Myorder = () => {
     const { user } = use(Authcontext)
@@ -42,9 +43,36 @@ const Myorder = () => {
 
 //   const handleCancle=()  
 const handleCancle=async(order)=>{
-   await axioshook.delete(`/myorder/${order._id}`)
-   toast('Order cancelled')
+
+Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, Cancel it!"
+}).then(async(result) => {
+  if (result.isConfirmed) {
+ await axioshook.delete(`/myorder/${order._id}`)
+   
    refetch()
+
+    Swal.fire({
+      title: "Canceled!",
+      text: "Your file has been Canceled.",
+      icon: "success"
+    });
+  }
+});
+
+
+
+
+
+
+
+  
 
 }
 

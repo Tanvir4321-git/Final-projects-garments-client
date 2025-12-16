@@ -9,10 +9,14 @@ import { FaWpforms } from 'react-icons/fa';
 import { SiManageiq } from "react-icons/si";
 import { FcApproval } from "react-icons/fc";
 import { CgProfile } from "react-icons/cg";
+import Navbar from '../Pages/Home/Navbar';
+import Footer from '../Pages/Home/Footer';
 
 const DashboardLayout = () => {
   const { role } = useRole()
   return (
+    <>
+    <Navbar></Navbar>
     <div className="drawer lg:drawer-open bg-linear-to-br from-gray-900 via-gray-800 to-black">
       <title>Dashboard</title>
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle " />
@@ -158,7 +162,10 @@ const DashboardLayout = () => {
           </ul>
         </div>
       </div>
+      
     </div>
+    <Footer></Footer>
+    </>
   );
 };
 
