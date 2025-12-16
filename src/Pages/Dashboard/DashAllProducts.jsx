@@ -160,7 +160,7 @@ const handleUpdate = async (data, id) => {
                                         <input
                                             type="checkbox"
                                             onChange={(e) => handleRemove(e, product)}
-                                            className="checkbox ml-2 border-red-600 checkbox-success checkbox-sm"
+                                            className="checkbox  border-red-600 checkbox-success checkbox-sm"
                                         />
                                         <span className="text-xs text-slate-400">Remove</span>
                                     </label>

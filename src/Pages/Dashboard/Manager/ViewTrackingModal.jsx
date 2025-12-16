@@ -37,7 +37,7 @@ const ViewTrackingModal = ({ viewTrackingRef, selectedProduct }) => {
             {
               trackings.map(track => <li key={track._id}>
                 <div className="timeline-start">{new Date(track.date).toLocaleDateString('en-GB')}.
-                  <p>From: {track.location}</p>
+                  <p> {track.location}</p>
                 </div>
                 <div className="timeline-middle">
                   <svg

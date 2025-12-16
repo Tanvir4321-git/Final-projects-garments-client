@@ -30,24 +30,22 @@ const ApprovedOrders = () => {
 
     const handlemodalOpen = (order) => {
        
-        if (order.paymentStatus === 'Unpaid') {
-            return toast('This buyer has not paid yet')
-        }
+      
         setSelectedProduct(order);
         trackingRef.current.showModal()
 
     }
     // view tracking modal
     const viewemodalOpen = (order) => {
-        console.log(order)
+      
         setSelectedProduct(order);
         viewTrackingRef.current.showModal()
         
 
     }
-console.log(selectedProduct)
+
 if(loading)return<Loading></Loading>
-console.log(selectedProduct?.trackingId)
+
 
     return (
         <div className='text-white p-8'>

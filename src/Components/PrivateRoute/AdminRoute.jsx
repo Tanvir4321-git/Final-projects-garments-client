@@ -9,7 +9,7 @@ const AdminRoute = ({children}) => {
 
 const {loading}=use(Authcontext)
 const {role,roleLoading}=useRole()
-console.log(role)
+
 
   if (loading || roleLoading) {
         return <Loading></Loading>

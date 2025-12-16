@@ -20,7 +20,7 @@ export default function ContactUs() {
   };
 
   const handleSubmit = () => {
-    console.log('Form submitted:', formData);
+   
     // Add your form submission logic here
     alert('Message sent successfully!');
     setFormData({

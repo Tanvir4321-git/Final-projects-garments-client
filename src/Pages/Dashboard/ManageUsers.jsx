@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react';
 import Loading from '../../Components/Loading';
 import Swal from 'sweetalert2';
 import useAxiosHook from '../../Components/CustomHooks/useAxiosHook';
+import { toast } from 'react-toastify';
 
 const ManageUsers = () => {
   const axioshook = useAxiosHook();
@@ -52,8 +53,8 @@ const ManageUsers = () => {
   const handlefeedback = async () => {
    
 if(!feedback.trim()) {
-  Swal.fire("Please write a reason");
-  return;
+
+  return toast('Please write a reason')
 }
  
 
@@ -234,26 +235,7 @@ if(!feedback.trim()) {
 
         </table>
 
-        {/* Open the modal using document.getElementById('ID').showModal() method */}
-
-        {/* <dialog ref={feedbackref} className="modal text-black">
-  <div className="modal-box bg-slate-800 border border-slate-600">
-  <h3 className="font-bold text-lg text-white mb-4">Send Feedback</h3>
-    <p className="text-slate-300 mb-4">Why is this user being suspended?</p>
-    <textarea 
-      className="textarea w-full bg-slate-700 border-slate-600 text-white placeholder:text-slate-400" 
-      placeholder="Write your reason here..."
-      rows="4"
-    ></textarea>
-    <div className="modal-action">
-      <form method="dialog">
-        {/* if there is a button in form, it will close the modal */}
-        {/* <button className="btn">Close</button>
-      </form>
-    </div>
-  </div>
-</dialog> */}
-
+    
 
 
 
@@ -264,6 +246,7 @@ if(!feedback.trim()) {
             <p className="text-slate-300 mb-4">Why is this user being suspended?</p>
 
             <textarea
+            required
               className="textarea w-full bg-slate-700 border-slate-600 text-white placeholder:text-slate-400"
               placeholder="Write your reason here..."
               rows="4"
@@ -276,10 +259,10 @@ if(!feedback.trim()) {
                   Submit
                 </button>
 
-              </form>
               <button className="btn bg-red-600 hover:bg-red-700 text-white border-none">
                 Close
               </button>
+              </form>
             </div>
           </div>
         </dialog>

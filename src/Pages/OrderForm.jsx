@@ -123,8 +123,7 @@ availableQuantity-data.quantity
     if (loading) return <p>Loading..</p>
 
 
-    // console.log(totalamount)
-    // console.log(product.price)
+  
 
     return (
         <div className='w-11/12 mx-auto  flex lg:flex-row flex-col items-center gap-10 md:gap-20 py-20'>

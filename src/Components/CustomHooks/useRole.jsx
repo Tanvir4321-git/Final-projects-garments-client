@@ -16,7 +16,7 @@ const useRole = () => {
     queryKey:['user-role',user?.email],
     queryFn:async()=>{
         const res=await axioshook.get(`/users/${user?.email}/role`)
-       console.log(res.data?.role,res.data?.status)
+      
          return {
         role: res.data?.role,
         status: res.data?.status,

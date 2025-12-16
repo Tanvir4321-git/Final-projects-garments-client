@@ -11,7 +11,7 @@ const AuthProvider = ({children}) => {
 
 const [user,setuser]=useState(null)
 const [loading,setloading]=useState(true)
-console.log(user)
+
 
     // Register
     const registerUser=(email,password)=>{

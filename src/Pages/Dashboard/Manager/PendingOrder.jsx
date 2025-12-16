@@ -5,7 +5,7 @@ import { Authcontext } from '../../../Components/Context/Authcontext';
 import { toast } from 'react-toastify';
 import OrderDetailsModal from './OrderDetailsModal';
 import useRole from '../../../Components/CustomHooks/useRole';
-
+import Swal from 'sweetalert2'
 const PendingOrder = () => {
     const axioshook = useAxiosHook()
     const { user } = use(Authcontext)
@@ -38,9 +38,30 @@ const PendingOrder = () => {
         if( role.role!=='Manager' || role.status ==='suspended' ){
             return toast('You are suspended, you can not Approve')
         }
-        await statusUpdate(order, 'approved')
+        if(order.payment==='PayFirst' && order.paymentStatus==='Unpaid'){
+            Swal.fire({
+  title: "Are you sure?",
+  text: "This Buyer is not Paid yet!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes Go Ahead!"
+}).then(async(result) => {
+  if (result.isConfirmed) {
+  await statusUpdate(order, 'approved')
         toast('Order Accepted')
         refetch()
+
+    Swal.fire({
+      title: "Confirm!",
+      text: "Your Order has been Accepted.",
+      icon: "success"
+    });
+  }
+});
+        }
+      
     }
 
     const hadlereject = async (order) => {

@@ -46,7 +46,7 @@ const SuspendFeedbackModal = ({ suspendRef, selectedUser, axioshook, refetch }) 
       setReason('');
     } catch (error) {
       toast.error('Failed to suspend user');
-      console.error(error);
+     
     }
   };
 

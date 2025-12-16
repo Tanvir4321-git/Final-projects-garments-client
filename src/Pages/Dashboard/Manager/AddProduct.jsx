@@ -34,7 +34,7 @@ const AddProduct = () => {
             navigate('/dashboard/manage-products')
             toast('Successfullly add product')
         } catch (err) {
-            console.log(err)
+            toast(err)
         }
 
 

@@ -32,7 +32,7 @@ const AddTrackingModal = ({ trackingRef, selectedProduct }) => {
 
   const handleSubmit =async (e) => {
     e.preventDefault();
-  //  console.log(formData.dateTime,formData.location)
+  
     const statusinfo={
         status:formData.status,
         trackingId:selectedProduct.trackingId,
