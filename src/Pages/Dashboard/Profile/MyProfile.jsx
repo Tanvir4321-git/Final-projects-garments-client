@@ -76,15 +76,18 @@ const MyProfile = () => {
                 <span className="px-4 py-1.5 bg-orange-500/20 text-orange-400 rounded-full text-sm font-semibold border border-orange-500/30">
                   {member.role}
                 </span> 
-                <span className="px-4 py-1.5 bg-red-500 ml-3 text-white rounded-full text-sm font-semibold border border-red-500">
+                {
+                  member.status==='suspended' && <span className="px-4 py-1.5 bg-red-500 ml-3 text-white rounded-full text-sm font-semibold border border-red-500">
                   {member.status}
                 </span> 
+                }
+                
               </div>
             </div>
 
 
             {
-              member.feedback &&
+              member.feedback && member.status==='suspended' &&
 
               <p className="text-red-600 text-center my-3 text-sm font-medium truncate">{member.
                 feedback}</p>
