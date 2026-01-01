@@ -60,6 +60,6 @@ To get started with this Social Event Website, follow these simple steps:
 
  2. Setup Environment Variables: Create a .env file and add your database and API keys as required.
 
- 3. Start the Development Server: Run npm start to launch the website locally.
+ 3. Start the Development Server: Run npm run dev  to launch the website locally.
 
  4. Contribute: Make changes or improvements to the code and push updates if needed.
