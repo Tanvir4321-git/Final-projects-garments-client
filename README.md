@@ -1,4 +1,9 @@
+<p align="center">
+  <img src="banner.png" alt="MERN Stack Developer Banner" width="100%">
+</p>
+
 Haque Garments
+
 📌 Project Purpose
 
 I have created a website named Haque Garments, which works as a complete online garments store.
