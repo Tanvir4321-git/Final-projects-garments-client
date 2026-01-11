@@ -90,7 +90,7 @@ if(!feedback.trim()) {
 
 
   return (
-    <div className='text-white p-4 md:p-8'>
+    <div className='text-black dark:text-white  p-4 md:p-8'>
             <title>Haque Garments- Manage users Page</title>
       <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-8">
         Manage Users
@@ -115,7 +115,7 @@ if(!feedback.trim()) {
               onChange={(e) => setSearch(e.target.value)}
               className='text-white bg-transparent'
               type="search"
-              placeholder="Search orders..."
+              placeholder="Search "
             />
           </label>
 
@@ -140,7 +140,7 @@ if(!feedback.trim()) {
         {users.map((user, i) => (
           <div
             key={i}
-            className="border border-slate-700 rounded-lg p-4 bg-slate-800/50"
+            className="border border-[#1c5cbd] rounded-lg p-4 bg-gray-100"
           >
             <div className="flex justify-between items-center mb-2">
               <h3 className="font-semibold">{user.name}</h3>
@@ -195,7 +195,7 @@ if(!feedback.trim()) {
 
           <tbody>
             {users.map((user, i) => (
-              <tr key={i} className="hover:bg-slate-800/50">
+              <tr key={i} className="dark:hover:bg-slate-800/80 hover:bg-green-200">
                 <th>{i + 1}</th>
                 <td>{user.name}</td>
                 <td>{user.email}</td>

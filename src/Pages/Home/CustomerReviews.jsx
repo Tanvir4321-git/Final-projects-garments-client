@@ -86,10 +86,10 @@ const CustomerReviews = () => {
           <motion.h2 initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.3 }}
-              transition={{ duration: 0.5,  }} className="text-5xl md:text-6xl font-bold text-white mb-4">
+              transition={{ duration: 0.5,  }} className="text-5xl md:text-6xl font-bold dark:text-white text-black mb-4">
             Customer <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500">Reviews</span>
           </motion.h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
             What our happy customers are saying about us
           </p>
         </motion.div>

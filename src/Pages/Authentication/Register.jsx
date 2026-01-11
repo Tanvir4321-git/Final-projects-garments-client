@@ -21,13 +21,14 @@ const Register = () => {
 
             const photo = data.photo[0]
             const photoURL = await imageUpload(photo)
-
+// user create 
             const res = await registerUser( email, pass)
-
+// user add in db
             await addorUpdateuser({ name, email, image: photoURL,role })
             const profile = {
                displayName:name, photoURL
             }
+            // user porfile update
             await profileUpdate(profile)
             navigate('/')
             toast('Successfully create a account')

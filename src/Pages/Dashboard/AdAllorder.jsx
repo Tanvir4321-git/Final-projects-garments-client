@@ -28,9 +28,9 @@ const AdAllorder = () => {
 
 
     return (
-        <div className='text-white p-8'>
+        <div className='text-black dark:text-white  p-8'>
                   <title>Haque Garments- All Order Page</title>
-            <h2 className="text-2xl  font-bold text-white mb-8">
+            <h2 className="text-2xl  font-bold text-black dark:text-white  mb-8">
                 All Orders
             </h2>
             <div className='flex items-center md:flex-row flex-col space-y-2  justify-between mb-4'>
@@ -76,7 +76,7 @@ const AdAllorder = () => {
                     <tbody>
                         {/* row 1 */}
                         {
-                            orders.map((order, i) => <tr key={i} className="hover:bg-slate-800/50 border-b border-slate-700">
+                            orders.map((order, i) => <tr key={i} className="dark:hover:bg-slate-800/80 hover:bg-green-200 border-b border-slate-700">
                                 <td className="text-sm font-mono">{order._id}</td>
                                 <td className="text-sm">{order.email}</td>
                                 <td className="text-sm">{order.productname}</td>

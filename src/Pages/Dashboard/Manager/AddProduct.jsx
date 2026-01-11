@@ -45,17 +45,17 @@ const AddProduct = () => {
 
       <title>Haque Garments-Product Add Page</title>
 
-            <h2 className="text-2xl text-center  font-bold text-white mb-14">
+            <h2 className="text-2xl text-center  font-bold text-black dark:text-white  mb-14">
                 Add New Products
             </h2>
 
-            <div className="hero  bg-white/5 border-2 rounded-xl border-[#36465c] backdrop-blur-sm ">
+            <div className="hero  bg-white/5 border-2 rounded-xl border-[#1c5cbd] backdrop-blur-sm ">
 
                 <div className="card w-full shrink-0 shadow-2xl">
                     <div className="card-body">
                         <form onSubmit={handleSubmit(handleAddProduct)}>
 
-                            <fieldset className="fieldset flex lg:flex-row flex-col gap-20  text-white text-[18px]">
+                            <fieldset className="fieldset flex lg:flex-row flex-col gap-20  text-black dark:text-white  text-[18px]">
                                 <div className='space-y-3'>
                                     {/* Product Name */}
                                     <label className="label">Product Name </label>
@@ -167,7 +167,7 @@ const AddProduct = () => {
                                     <textarea
                                         {...register('description', { required: 'Description is required' })}
                                         rows={4}
-                                        className="w-full rounded bg-amber-50 text-black p-2"
+                                        className="w-full border border-gray-300 rounded bg-amber-50 text-black p-2"
                                         placeholder="Write product details..."
                                     ></textarea>
                                     {errors.description && <p className='text-red-600 text-[16px]'>{errors.description.message}</p>}

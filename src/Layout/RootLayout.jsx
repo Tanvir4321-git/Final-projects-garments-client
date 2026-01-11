@@ -5,11 +5,13 @@ import Footer from '../Pages/Home/Footer';
 
 const RootLayout = () => {
     return (
-        <div>
-          <header>
+        <div >
+        
             <Navbar></Navbar>
-          </header>
-          <main className='bg-linear-to-br from-gray-900 via-gray-800 to-black'><Outlet></Outlet></main>
+      
+          <main className="bg-gradient-to-br from-orange-50 via-red-50 to-pink-50 
+dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-black"
+><Outlet></Outlet></main>
           
           <footer>
             <Footer></Footer>

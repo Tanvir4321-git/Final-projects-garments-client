@@ -56,7 +56,7 @@ const WhychosseUs = () => {
             <motion.h2 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.3 }}
-                transition={{ duration: 0.5, }} className="text-5xl md:text-6xl font-bold text-white text-center mb-4">
+                transition={{ duration: 0.5, }} className="text-5xl md:text-6xl font-bold dark:text-white text-black text-center mb-4">
                 Why <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500">Chosse  us</span>
             </motion.h2>
 
@@ -84,7 +84,7 @@ const WhychosseUs = () => {
 
 
 
-                         className='bg-linear-to-br from-gray-800/80 via-gray-900/80 to-black/80 rounded-xl p-6 border border-[#252f3e] '>
+                         className='  dark:bg-linear-to-br dark:from-gray-800/80 dark:via-gray-900/80 dark:to-black/80 rounded-xl p-6 border border-[#1c5cbd]   '>
                         <div className={`bg-gradient-to-r ${d.color} inline-block  rounded-xl`}>
 
                             <div className={`p-4  text-white  `}>

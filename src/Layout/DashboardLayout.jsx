@@ -16,8 +16,9 @@ const DashboardLayout = () => {
   const { role } = useRole()
   return (
     <>
-    <Navbar></Navbar>
-    <div className="drawer lg:drawer-open bg-linear-to-br from-gray-900 via-gray-800 to-black">
+   
+    <div className="drawer lg:drawer-open bg-gradient-to-br from-orange-50 via-red-50 to-pink-50 
+dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-black">
       <title>Dashboard</title>
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle " />
       <div className="drawer-content ">
@@ -164,7 +165,7 @@ const DashboardLayout = () => {
       </div>
       
     </div>
-    <Footer></Footer>
+   
     </>
   );
 };

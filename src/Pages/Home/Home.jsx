@@ -6,6 +6,10 @@ import CustomerReviews from './CustomerReviews';
 import WhychosseUs from './WhychosseUs';
 
 import OurTrustedPartener from './OurTrustedPartener';
+import ManufacturingProcess from './ManufacturingProcess';
+import ProductCategories from './ProductCategories';
+import OurExpertise from './OurExpertise';
+import FAQSection from './FAQSection';
 // import review from '../../assets/review.webp'
 
 
@@ -15,16 +19,18 @@ import OurTrustedPartener from './OurTrustedPartener';
 
 const Home = () => {
     return (
-        <div>
+        <div className=''>
                   <title>Haque Garments-Home</title>
             <Banner></Banner>
             <OurProducts></OurProducts>
+            <ProductCategories></ProductCategories>
             <HowitWorks></HowitWorks>
+        <ManufacturingProcess></ManufacturingProcess>
           <CustomerReviews></CustomerReviews>
           <WhychosseUs></WhychosseUs>
-        
+          <OurExpertise></OurExpertise>
           <OurTrustedPartener></OurTrustedPartener>
-
+          <FAQSection></FAQSection>
      
 
 

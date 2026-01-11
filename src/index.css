@@ -2,14 +2,17 @@
 
 @import "tailwindcss";
 @plugin "daisyui";
-
+@variant dark (&:is(.dark *));
 body{
   font-family: "Stack Sans Text", sans-serif;
 }
 .nav-menu{
   font-size:20px;
-  color: white;
+  color: black;
   
+}
+.dark .nav-menu{
+   color: white;
 }
 .nav-menu:hover{
   color: #f9652f;
@@ -17,31 +20,51 @@ body{
 .active{
 color: #f9652f;
 }
+.dark .active{
+  color: #f9652f;
+}
 .button{
   background-color: #f9652f;
  
   border-radius: 8px;
 
-  color: white;
+  color: black;
   display: flex;
   align-items: center;
   
   transition:0.5s;
   
 }
+.dark .button{
+  color: white;
+}
 .arrow{
-  background-color: black;
+  background-color: white;
  
   border-radius: 5px;
-  color: white;
+  color: black;
   transition:0.5s;
 }
+.dark .arrow{
+   background-color: black;
+   color: white;
+}
 .button:hover{
-  background-color: black;
+  background-color: white;
   border:1px solid #f9652f;
+
+}
+.dark .button:hover{
+  background-color: black;
+
 
 }
 .button:hover .arrow{
   background-color: #f9652f;
+  color: white;
+}
+
+.dark .button:hover .arrow{
+  
   color: black;
 }

@@ -54,7 +54,7 @@ const Banner = () => {
   return (
     <div className="relative overflow-hidden">
       <div
-        className="relative h-[600px] flex items-center justify-center text-center bg-cover bg-center transition-all duration-500"
+        className="relative h-[400px] flex items-center justify-center text-center bg-cover bg-center transition-all duration-500"
         style={{ backgroundImage: `url(${slide.img})` }}
       >
         {/* overlay */}
@@ -97,7 +97,7 @@ const Banner = () => {
       <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center gap-4">
 
    
-        <motion.div
+        {/* <motion.div
           whileTap={{ scale: 0.9, y: 2 }}
           transition={{ type: "spring", stiffness: 400, damping: 15 }}
         >
@@ -107,7 +107,7 @@ const Banner = () => {
               <FaArrowRight size={12}/>
             </button>
           </Link>
-        </motion.div>
+        </motion.div> */}
         
         {/* Pagination Dots */}
         <div className="flex gap-3">

@@ -53,9 +53,9 @@ export const router = createBrowserRouter([
       },
       {
         path: '/more-details/:id',
-        element: <PrivateROute>
+        element: 
           <MoreDetails></MoreDetails>
-        </PrivateROute>
+        
 
       },
       {

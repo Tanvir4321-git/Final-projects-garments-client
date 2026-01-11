@@ -21,7 +21,7 @@ const TrackYourOrder = () => {
   const lastIndex = trackings.length - 1; // latest tracking
 
   return (
-    <div className='text-white p-8'>
+    <div className='text-black dark:text-white  p-8'>
 
             <title>Haque Garments- Track Order Page</title><h2 className="text-2xl font-bold mb-4">Track  Order</h2>
       <p className="mb-8"> Tracking Number: <span className="font-bold">{trackingId}</span></p>
@@ -37,7 +37,7 @@ const TrackYourOrder = () => {
                 {track.location && (<p>  <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(track.location)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-400 underline cursor-pointer"
+                  className="text-blue-700 underline cursor-pointer"
                 >
                   {track.location}
                 </a>
@@ -58,13 +58,14 @@ const TrackYourOrder = () => {
                     fillRule="evenodd"
                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
                     clipRule="evenodd"
+                    
                   />
                 </svg>
               </div>
 
               {/* Details */}
               <div
-                className={`timeline-end timeline-box ${isLatest ? 'bg-green-500 text-white' : 'text-black'}`}
+                className={`timeline-end timeline-box ${isLatest ? 'bg-green-500 text-white' : 'bg-white text-black'}`}
               >
                 {track.details}
                 {isLatest && <p className="text-sm">(Latest)</p>}

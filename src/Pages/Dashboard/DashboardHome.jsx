@@ -2,34 +2,63 @@ import React from 'react';
 import { FaFirstOrderAlt, FaUser, FaUsers } from 'react-icons/fa';
 import { GrUserManager } from 'react-icons/gr';
 import { motion } from 'framer-motion';
+import { useQuery } from '@tanstack/react-query';
+import useAxiosHook from '../../Components/CustomHooks/useAxiosHook';
+import DashboardOrdersChart from './DashboardOrdersChart';
 const DashboardHome = () => {
+  const axioshook=useAxiosHook()
 
-    const steps = [
-        {
-          icon: <FaUsers className="w-12 h-12" />,
-          title: "Total Users",
-          description: "55",
-          color: "from-orange-500 to-red-500"
-        },
-        {
-          icon: <GrUserManager  className="w-12 h-12" />,
-          title: "Managers",
-          description: "20",
-          color: "from-red-500 to-pink-500"
-        },
-        {
-          icon: <FaUser  className="w-12 h-12" />,
-          title: "Buyers",
-          description: "34",
-          color: "from-pink-500 to-purple-500"
-        },
-        {
-          icon: <FaFirstOrderAlt className="w-12 h-12" />,
-          title: "Total Order",
-          description: "200",
-          color: "from-purple-500 to-indigo-500"
-        }
-      ];
+  const { data= []} = useQuery({
+    queryKey: ['userssummary'],
+    queryFn: async () => {
+      const res = await axioshook(`/users/summary`);
+      return res.data;
+    }
+  });
+
+  const { data: totalOrders } = useQuery({
+    queryKey: ['totalOrders'],
+    queryFn: async () => {
+      const res = await axioshook('/totalOrders');
+      return res.data;
+    }
+  });
+ 
+const buyer = data?.roles?.find(dt => dt.role === 'Buyer')?.count || 0;
+const managerCount = data?.roles?.find(dt => dt.role === 'Manager')?.count || 0;
+
+  
+  const steps = [
+      {
+        icon: <FaUsers className="w-12 h-12" />,
+        title: "Total Users",
+        description: data?.totalUsers,
+        color: "from-orange-500 to-red-500"
+      },
+      {
+        icon: <GrUserManager  className="w-12 h-12" />,
+        title: "Managers",
+        description: managerCount,
+        color: "from-red-500 to-pink-500"
+      },
+      {
+        icon: <FaUser  className="w-12 h-12" />,
+        title: "Buyers",
+        description: buyer,
+        color: "from-pink-500 to-purple-500"
+      },
+      {
+        icon: <FaFirstOrderAlt className="w-12 h-12" />,
+        title: "Total Order",
+        description: totalOrders,
+        color: "from-purple-500 to-indigo-500"
+      }
+    ];
+
+
+     
+ 
+
 
 
 
@@ -37,7 +66,7 @@ const DashboardHome = () => {
     return (
         <div className='p-8'>
                 <title>Haque Garments- home Page</title>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-[100px]">
           {steps.map((step, index) => (
             <motion.div
               key={index}
@@ -49,14 +78,14 @@ const DashboardHome = () => {
             >
               {/* Connection Line */}
               {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-20 left-full w-full h-1 bg-gradient-to-r from-orange-500/30 to-transparent -translate-x-4 z-0" />
+                <div className="hidden lg:block absolute top-20 left-full w-full h-1 bg-gradient-to-r from-orange-500/90 to-transparent -translate-x-4 z-0" />
               )}
 
               {/* Card */}
               <motion.div
                 whileHover={{ y: -10, scale: 1.05 }}
                 transition={{ duration: 0.3 }}
-                className="relative z-10 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 border-2 border-gray-700 hover:border-red-600 transition-all duration-300"
+                className="relative z-10 bg-white dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 border-2 border-[#1c5cbd] hover:border-red-600 transition-all duration-300"
               >
                 {/* Step Number */}
                 <div className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
@@ -73,16 +102,19 @@ const DashboardHome = () => {
                 </motion.div>
 
                 {/* Content */}
-                <h3 className="text-2xl font-bold text-white mb-3 text-center">
+                <h3 className="text-2xl font-bold text-black dark:text-white  mb-3 text-center">
                   {step.title}
                 </h3>
-                <p className="text-gray-400 text-center leading-relaxed">
+                <p className="text-gray-500 text-center leading-relaxed">
                   {step.description}
                 </p>
               </motion.div>
             </motion.div>
           ))}
         </div>
+
+<DashboardOrdersChart></DashboardOrdersChart>
+
         </div>
     );
 };

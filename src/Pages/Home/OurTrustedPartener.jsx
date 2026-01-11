@@ -19,7 +19,7 @@ const OurTrustedPartener = () => {
               <motion.h2 initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.3 }}
-              transition={{ duration: 0.5,  }} className="text-5xl md:text-6xl font-bold text-white text-center my-[100px]">
+              transition={{ duration: 0.5,  }} className="text-5xl md:text-6xl font-bold text-black dark:text-white text-center my-[100px]">
             Our Trusted <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500">Partners</span>
           </motion.h2>
          <Marquee >

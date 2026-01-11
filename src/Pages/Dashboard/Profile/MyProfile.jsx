@@ -10,6 +10,7 @@ import useAxiosHook from '../../../Components/CustomHooks/useAxiosHook';
 import { use } from 'react';
 import { Authcontext } from '../../../Components/Context/Authcontext';
 import { toast } from 'react-toastify';
+import UpdateProfile from './UpdateProfile';
 
 const MyProfile = () => {
   const axioshook = useAxiosHook()
@@ -17,7 +18,7 @@ const MyProfile = () => {
   const { logOut } = use(Authcontext)
 
 
-  const { data: member = [], isLoading } = useQuery({
+  const { data: member = [], isLoading,refetch } = useQuery({
     queryKey: ['userProfile', user?.email],
     queryFn: async () => {
       const res = await axioshook(`/user-profile/${user?.email}`)
@@ -36,15 +37,17 @@ const MyProfile = () => {
 
   }
 
+  console.log(member?.image)
 
   if (isLoading) return <Loading></Loading>
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-red-50 to-pink-50 
+dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-black flex items-center justify-center p-4">
            <title>Haque Garments- My Profile </title>
       <div className="w-full max-w-md">
         {/* Profile Card */}
-        <div className="bg-slate-800 rounded-2xl shadow-2xl border border-slate-700 overflow-hidden">
+        <div className="dark:bg-slate-800 bg-white rounded-2xl shadow-2xl border border-slate-700 overflow-hidden">
           {/* Header with Gradient */}
           <div className="h-32 bg-[#2ff95b]"></div>
           <div className="relative px-8 pb-8">
@@ -57,8 +60,8 @@ const MyProfile = () => {
               <div className="relative">
                 <div className="w-32 h-32 rounded-full overflow-hidden ring-4 ring-slate-800 shadow-xl">
                   <img
-                    src={member.image}
-                    alt={member.name}
+                    src={member?.image}
+                    alt={member?.name}
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -69,12 +72,12 @@ const MyProfile = () => {
 
             {/* User Name */}
             <div className="text-center mb-6">
-              <h2 className="text-3xl font-bold text-white mb-2">
-                {member.name}
+              <h2 className="text-3xl font-bold text-black dark:text-white  mb-2">
+                {member?.name}
               </h2>
               <div className="inline-block">
                 <span className="px-4 py-1.5 bg-orange-500/20 text-orange-400 rounded-full text-sm font-semibold border border-orange-500/30">
-                  {member.role}
+                  {member?.role}
                 </span> 
                 {
                   member.status==='suspended' && <span className="px-4 py-1.5 bg-red-500 ml-3 text-white rounded-full text-sm font-semibold border border-red-500">
@@ -94,7 +97,7 @@ const MyProfile = () => {
             }
 
             {/* Email Section */}
-            <div className="bg-slate-700/50 rounded-xl p-4 mb-6 border border-slate-600">
+            <div className="bg-slate-700/30 rounded-xl p-4 mb-6 border border-[#1c5cbd]">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-orange-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
                   <svg className="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -102,8 +105,8 @@ const MyProfile = () => {
                   </svg>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-xs text-slate-400 mb-1">Email Address</p>
-                  <p className="text-white text-sm font-medium truncate">{member.email}</p>
+                  <p className="text-xs text-slate-500 mb-1">Email Address</p>
+                  <p className="text-black dark:text-white  text-sm font-medium truncate">{member?.email}</p>
 
 
                 </div>
@@ -111,12 +114,7 @@ const MyProfile = () => {
               </div>
             </div>
 
-
-
-
-
-
-
+<UpdateProfile refetch={refetch}></UpdateProfile>
 
             {/* Logout Button */}
             <motion.div

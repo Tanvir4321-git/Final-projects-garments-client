@@ -48,14 +48,14 @@ if(loading)return<Loading></Loading>
 
 
     return (
-        <div className='text-white p-8'>
+        <div className='text-black dark:text-white  p-8'>
                   <title>Haque Garments-Approve Page</title>
-            <h2 className="text-2xl  font-bold text-white mb-8">
+            <h2 className="text-2xl  font-bold text-black dark:text-white  mb-8">
                 Approved Orders
             </h2>
             <h3 className="text-lg mb-4">Total Approved Orders: <span className=" font-bold">{orders.length}</span></h3>
 
-            <div className="overflow-x-auto mt-8 rounded-lg border border-slate-700">
+            <div className="overflow-x-auto mt-8 rounded-lg border border-[#1c5cbd]">
                 <table className="table w-full">
                     {/* head */}
                     <thead className='text-white bg-slate-800'>
@@ -71,7 +71,7 @@ if(loading)return<Loading></Loading>
                     <tbody>
                         {/* row 1 */}
                         {
-                            orders.map((order, i) => <tr key={i} className="hover:bg-slate-800/50 border-b border-slate-700">
+                            orders.map((order, i) => <tr key={i} className="dark:hover:bg-slate-800/80 hover:bg-green-200 border-b border-[#1c5cbd]">
                                 <td className="text-sm font-mono">{order.trackingId}</td>
                                 <td className="text-sm">{order.email}</td>
                                 <td className="text-sm">{order.productname}</td>

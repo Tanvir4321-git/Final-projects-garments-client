@@ -119,9 +119,9 @@ const handleUpdate = async (data, id) => {
 
 
     return (
-        <div className='text-white p-8'>
+        <div className='text-black dark:text-white  p-8'>
                   <title>Haque Garments- all Products</title>
-            <h2 className="text-2xl  font-bold text-white mb-8">
+            <h2 className="text-2xl  font-bold text-black dark:text-white  mb-8">
                 All Products
             </h2>
             <h3>Total Products: {products.length}</h3>
@@ -147,7 +147,7 @@ const handleUpdate = async (data, id) => {
                     <tbody>
                         {/* row 1 */}
                         {
-                            products.map((product, i) => <tr key={i} className="hover:bg-slate-800/50 border-b border-slate-700">
+                            products.map((product, i) => <tr key={i} className="dark:hover:bg-slate-800/80 hover:bg-green-200 border-b border-slate-700">
                                 <th><img className='w-12 h-12 rounded object-cover' src={product.image} alt="" /></th>
                                 <td className="text-sm">{product.productName}</td>
                                 <td className="text-sm">{product.price}</td>
@@ -163,7 +163,7 @@ const handleUpdate = async (data, id) => {
                                             onChange={(e) => handleRemove(e, product)}
                                             className="checkbox  border-red-600 checkbox-success checkbox-sm"
                                         />
-                                        <span className="text-xs text-slate-400">Remove</span>
+                                        <span className="text-xs text-slate-500">Remove</span>
                                     </label>
                                       
                                       </td>  
@@ -174,7 +174,7 @@ const handleUpdate = async (data, id) => {
                                             onChange={(e) => handleCheck(e, product)}
                                             className="checkbox checkbox-success checkbox-sm"
                                         />
-                                        <span className="text-xs text-slate-400">Show</span>
+                                        <span className="text-xs text-slate-500">Show</span>
                                     </label>
                                 </td>
                                 }
@@ -201,9 +201,9 @@ const handleUpdate = async (data, id) => {
 
                     </tbody>
                 </table>
-
+{/* // update modal */}
 <dialog ref={updateref} className="modal modal-bottom sm:modal-middle">
-  <div className="modal-box  bg-white/5 border-2 rounded-xl border-[#36465c] backdrop-blur-sm">
+  <div className="modal-box bg-black dark:bg-white/5 border-2 rounded-xl border-[#36465c] backdrop-blur-sm">
     <div className="hero  ">
 
    <div className="card w-full shrink-0 shadow-2xl">

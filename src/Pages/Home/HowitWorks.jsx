@@ -49,10 +49,10 @@ const steps = [
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl font-bold text-white mb-4">
+          <h2 className="text-5xl font-bold dark:text-white text-black mb-4">
             How It <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500">Works</span>
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
             Simple steps from browsing to delivery - your journey to premium garments
           </p>
         </motion.div>
@@ -77,7 +77,7 @@ const steps = [
               <motion.div
                 whileHover={{ y: -10, scale: 1.05 }}
                 transition={{ duration: 0.3 }}
-                className="relative z-10 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 border-2 border-gray-700 hover:border-red-600 transition-all duration-300"
+                className="relative z-10 bg-white  dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 border-2 border-[#1c5cbd]   hover:border-red-600 transition-all duration-300"
               >
                 {/* Step Number */}
                 <div className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
@@ -94,10 +94,10 @@ const steps = [
                 </motion.div>
 
                 {/* Content */}
-                <h3 className="text-2xl font-bold text-white mb-3 text-center">
+                <h3 className="text-2xl font-bold dark:text-white text-black mb-3 text-center">
                   {step.title}
                 </h3>
-                <p className="text-gray-400 text-center leading-relaxed">
+                <p className="text-gray-500 text-center leading-relaxed">
                   {step.description}
                 </p>
               </motion.div>

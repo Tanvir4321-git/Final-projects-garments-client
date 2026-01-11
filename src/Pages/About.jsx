@@ -2,14 +2,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaUsers, FaBullseye, FaAward, FaChartLine, FaHandshake, FaShieldAlt } from 'react-icons/fa';
+import { Link } from 'react-router';
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-[#0f1729] text-white">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-red-50 to-pink-50 
+dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-black text-black dark:text-white">
         <title>Haque Garments- About Page</title>
       {/* Hero Section */}
       <div className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-600/10 via-[#0f1729] to-blue-900/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-black"></div>
         <div className="absolute inset-0" style={{
           backgroundImage: `url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920')`,
           backgroundSize: 'cover',
@@ -47,7 +49,7 @@ export default function AboutPage() {
               </h2>
             </div>
             
-            <div className="space-y-6 text-lg text-slate-300 leading-relaxed">
+            <div className="space-y-6 text-lg text-slate-500 leading-relaxed">
               <p>
                 Our story began with a simple vision: to create garments that blend traditional craftsmanship with modern innovation. Today, we stand as a testament to that vision, delivering premium quality products to clients worldwide.
               </p>
@@ -98,7 +100,7 @@ export default function AboutPage() {
       </div>
 
       {/* Core Values */}
-      <div className="bg-slate-900/50 py-32">
+      <div className=" py-32">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
             <span className="text-orange-500 text-sm uppercase tracking-widest font-semibold">What Drives Us</span>
@@ -148,7 +150,7 @@ export default function AboutPage() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
              
                 
-                className="group relative bg-[#1a2332] p-10 rounded-2xl border border-slate-800 hover:border-orange-500/50 transition-all duration-500 overflow-hidden"
+                className="group relative bg-white dark:bg-[#1a2332] p-10 rounded-2xl border border-[#1c5cbd] hover:border-red-500 transition-all duration-500 overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-orange-500/0 to-orange-500/0 group-hover:from-orange-500/5 group-hover:to-transparent transition-all duration-500"></div>
                 
@@ -157,7 +159,7 @@ export default function AboutPage() {
                     {value.icon}
                   </div>
                   <h3 className="text-2xl font-bold mb-4">{value.title}</h3>
-                  <p className="text-slate-400 leading-relaxed">{value.desc}</p>
+                  <p className="text-slate-500 leading-relaxed">{value.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -165,7 +167,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Why Choose Us */}
+      {/* Why makes us defferent */}
       <div className="max-w-7xl mx-auto px-6 py-32">
         <div className="text-center mb-20">
           <span className="text-orange-500 text-sm uppercase tracking-widest font-semibold">Why Partner With Us</span>
@@ -208,7 +210,7 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold mb-3">{item.title}</h3>
-                  <p className="text-slate-400 leading-relaxed">{item.desc}</p>
+                  <p className="text-slate-500 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -233,7 +235,7 @@ export default function AboutPage() {
       </div>
 
       {/* CTA Section */}
-      <div className="max-w-7xl mx-auto px-6 py-20 mb-20">
+      <div className="max-w-7xl mx-auto px-6 py-20 ">
         <div className="relative overflow-hidden rounded-3xl  bg-gradient-to-r from-orange-500 to-red-500 p-16 text-center">
           <div className="absolute inset-0 opacity-20">
             <div className="absolute inset-0" style={{
@@ -247,9 +249,11 @@ export default function AboutPage() {
             <p className="text-xl mb-10 opacity-90 max-w-2xl mx-auto">
               Let's collaborate to bring your vision to life with our expertise and commitment to excellence
             </p>
+            <Link to='/contact'>
             <button className="bg-white text-orange-600 px-10 py-5 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
               Get In Touch →
             </button>
+            </Link>
           </div>
         </div>
       </div>

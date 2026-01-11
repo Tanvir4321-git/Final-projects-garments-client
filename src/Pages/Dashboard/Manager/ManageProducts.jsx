@@ -98,15 +98,15 @@ const ManageProducts = () => {
     // if (isLoading) return <Loading></Loading>
 
     return (
-        <div className='text-white p-8'>
+        <div className='text-black dark:text-white  p-8'>
                   <title>Haque Garments- Manage Order Page</title>
-            <h2 className="text-2xl  font-bold text-white mb-8">
+            <h2 className="text-2xl  font-bold text-black dark:text-white  mb-8">
                 Manage Products
             </h2>
             <div className='flex items-center md:flex-row flex-col justify-between mb-4'>
                 <h3 className="text-lg">Total Products: <span className=" font-bold">{products.length}</span></h3>
 
-                <label className="input input-bordered flex items-center gap-2 bg-slate-800 border-slate-600">
+                <label className="input input-bordered flex items-center gap-2 bg-slate-800 border-[#1c5cbd]">
                     <svg className="h-4 w-4 opacity-70" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <g
                             strokeLinejoin="round"
@@ -145,7 +145,7 @@ const ManageProducts = () => {
                     <tbody>
                         {/* row 1 */}
                         {
-                            products.map((product, i) => <tr key={i} className="hover:bg-slate-800/50 border-b border-slate-700">
+                            products.map((product, i) => <tr key={i} className="hover:dark:hover:bg-slate-800/80 hover:bg-green-200 border-b border-slate-700">
                                 <th><img className='w-12 h-12 rounded object-cover' src={product.image} alt="" /></th>
                                 <td className="text-sm">{product.productName}</td>
                                 <td className="text-sm">{product.price}</td>
@@ -180,9 +180,9 @@ const ManageProducts = () => {
 
                     </tbody>
                 </table>
-
+{/* update modal */}
                 <dialog ref={updateref} className="modal modal-bottom sm:modal-middle">
-                    <div className="modal-box  bg-white/5 border-2 rounded-xl border-[#36465c] backdrop-blur-sm">
+                    <div className="modal-box bg-black dark:bg-white/5 border-2 rounded-xl border-[#36465c] backdrop-blur-sm">
                         <div className="hero  ">
 
                             <div className="card w-full shrink-0 shadow-2xl">
